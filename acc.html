@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings - Jujutsu Kaisen: Rise of Cursed Sorcery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #121212, #1e1e1e);
+            color: #f4f4f4;
+        }
+
+        header {
+            background: #1f1f1f;
+            color: #e63946; /* New color */
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo img {
+            width: 200px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #f0f0f0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #e63946; /* Hover color */
+        }
+
+        .cta-buttons {
+            display: flex;
+        }
+
+        .play-now-btn1, .download-btn {
+            background-color: #e63946; /* Button color */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .play-now-btn1:hover, .download-btn:hover {
+            background-color: #d62839; /* Darker shade on hover */
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #282828; /* Darker section background */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            color: #e63946; /* New color */
+            border-bottom: 2px solid #f4f4f4;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        .settings-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #1f1f1f; /* Section background */
+            transition: background-color 0.3s;
+        }
+
+        .settings-section:hover {
+            background-color: #2a2a2a; /* Darker shade on hover */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #383838; /* Input background */
+            color: #f4f4f4;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        select:focus {
+            border-color: #e63946; /* Gold border on focus */
+            outline: none;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #5c4d9b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #4a3a7f; /* Slightly darker */
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            background: #1f1f1f;
+            color: #fff;
+        }
+
+        a {
+            color: #e63946; /* New color */
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #fff; /* Change color on hover */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        .unblock-button {
+            background: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .unblock-button:hover {
+            background: #c9302c;
+            transform: scale(1.05);
+        }
+
+        #profile-pic {
+            border-radius: 50%;
+            border: 2px solid #e63946; /* New color */
+            margin-bottom: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            main {
+                padding: 10px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="jjk.png" alt="Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="abt.html">About the Game</a></li>
+                    <li><a href="#" onclick="underDevelopment()">Play</a></li>
+                    <li><a href="#" onclick="underDevelopment()">Leaderboards</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="#" onclick="underDevelopment()">Support</a></li>
+                    <li><a href="#acc.html">Account Settings</a></li>
+                </ul>
+            </nav>
+            <div class="cta-buttons">
+                <button class="play-now-btn1">Play Now</button>
+                <button class="download-btn">Download</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="settings-section">
+            <h2>Profile Information</h2>
+            <img id="profile-pic" src="default-profile.png" alt="Profile Picture" style="width: 100px; height: 100px;">
+            <form id="update-info-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+
+                <a href="#" id="change-password-link">Change Password</a>
+            </form>
+        </section>
+
+        <section class="settings-section">
+            <h2>Account Details</h2>
+            <p>Account Creation Date: <span id="account-creation-date">2024-01-01</span></p>
+            <p>Last Login Date: <span id="last-login-date">2024-10-20</span></p>
+            <p>Account Status: <span id="account-status">Active</span></p>
+        </section>
+
+        <section class="settings-section">
+            <h2>Gameplay Statistics</h2>
+            <p>Total Playtime: <span id="total-playtime">20 hours</span></p>
+            <p>Achievements Unlocked: <span id="achievements-unlocked">5</span></p>
+            <p>Leaderboard Rank: <span id="leaderboard-rank">Top 100</span></p>
+            <p>Characters Played: <span id="characters-played">4</span></p>
+        </section>
+
+        <section class="settings-section">
+            <h2>Customization Options</h2>
+            <label for="profile-theme">Profile Theme:</label>
+            <select id="profile-theme">
+                <option value="light">Light Mode</option>
+               

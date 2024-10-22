@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Registration and Login</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: black;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: #f1f1f1;
+            color: black;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+        .toggle-form {
+            margin-top: 15px;
+        }
+        .toggle-form p {
+            font-size: 0.9em;
+        }
+        .error {
+            color: red;
+            margin-bottom: 15px;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 500px) {
+            .container {
+                margin: 20px auto;
+                padding: 15px;
+            }
+            button {
+                font-size: 0.9em;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" role="main">
+        <h1 id="form-title">Register</h1>
+        <form id="auth-form">
+            <div class="error" id="error-message" aria-live="polite"></div>
+            <input type="text" id="username" placeholder="Username" aria-label="Username" required>
+            <input type="password" id="password" placeholder="Password" aria-label="Password" required>
+            <input type="password" id="repeat-password" placeholder="Repeat Password" aria-label="Repeat Password" style="display: none;" pattern=".{6,}" title="Must be at least 6 characters long">
+            <button type="submit" id="submit-button">Register</button>
+        </form>
+        <div class="toggle-form">
+            <p id="toggle-text">Already have an account? <a href="javascript:void(0)" aria-role="button" style="color: #4285F4; text-decoration: underline;">Log In</a></p>
+        </div>
+    </div>
+
+    <script>
+        const authForm = document.getElementById('auth-form');
+        const submitButton = document.getElementById('submit-button');
+        const formTitle = document.getElementById('form-title');
+        const toggleText = document.getElementById('toggle-text');
+        const repeatPasswordField = document.getElementById('repeat-password');
+        const errorMessage = document.getElementById('error-message');
+
+        let isRegistering = true;
+
+        toggleText.addEventListener('click', () => {
+            isRegistering = !isRegistering;
+            if (isRegistering) {
+                formTitle.textContent = "Register";
+                submitButton.textContent = "Register";
+                repeatPasswordField.style.display = "block";
+                toggleText.innerHTML = 'Already have an account? <a href="javascript:void(0)" style="color: #4285F4; text-decoration: underline;">Log In</a>';
+            } else {
+                formTitle.textContent = "Log In";
+                submitButton.textContent = "Log In";
+                repeatPasswordField.style.display = "none";
+                toggleText.innerHTML = 'Don\'t have an account? <a href="javascript:void(0)" style="color: #4285F4; text-decoration: underline;">Register</a>';
+            }
+            errorMessage.textContent = ""; // Clear any error messages
+        });
+
+        authForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const repeatPassword = repeatPasswordField.value;
+
+            if (isRegistering && password !== repeatPassword) {
+                errorMessage.textContent = "Passwords do not match!";
+                return;
+            }
+
+            const url = isRegistering ? 'http://localhost:5000/register' : 'http://localhost:5000/login';
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(errorText);
+                }
+
+                const data = await response.json();
+                alert(isRegistering ? "Registration successful!" : "Login successful!");
+                // Handle successful login or registration
+            } catch (error) {
+                errorMessage.textContent = error.message;
+            }
+        });
+    </script>
+
+</body>
+</html>

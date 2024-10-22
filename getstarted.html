@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jujutsu Kaisen: Rise of Cursed Sorcery </title>
+    <style>
+        
+        /* Basic CSS for layout and styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #1a1a1a;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Video background styling */
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .video-container video {
+            min-height: 100%;
+            min-width: 100%;
+            object-fit: cover;
+            filter: brightness(60%);
+        }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero-section h1 {
+            font-size: 4rem;
+            margin: 0;
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+
+        .hero-section .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .hero-section .btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1a1a1a;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Meet the Characters Section */
+        .character-section {
+            padding: 100px 20px;
+            text-align: center;
+            background-color: #111;
+            color: white;
+        }
+
+        .character-section h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .character-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        /* Character description styling */
+        .character-description {
+            display: none;
+            padding: 50px;
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+        }
+
+        .character-description img {
+            width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .character-description h3 {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+
+        .character-description p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .character-description ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .character-description ul li {
+            font-size: 1.1rem;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation bar -->
+    <nav>
+        <div>
+            <a href="#"><img src="jjk.png" alt="Game Logo" width="100"></a>
+        </div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Download</a></li>
+        </ul>
+    </nav>
+
+    <!-- Video Background -->
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="vid.mp4" type="video/mp4">
+            <!-- Fallback message for browsers that don't support the video tag -->
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>Welcome to Jujutsu Kaisen: Rise of Cursed Sorcery</h1>
+        <p>Unleash your cursed energy and fight the forces of darkness.</p>
+        <a href="index.html">
+            <button class="btn">Get Started</button>
+        </a>
+        
+    </div>
+
+    <!-- Meet the Characters Section -->
+    <div class="character-section" id="characters">
+        <h2>Meet the Characters</h2>
+        <p>Before you step into this world of Jujutsu Sorcery, get to know the characters who will guide, challenge, and fight alongside you. Each character comes with unique abilities, strengths, and storylines that shape the game's world.</p>
+    </div>
+
+    <!-- Satoru Gojo Character Description -->
+    <div class="character-description" id="gojo-description">
+        <img src="img1.jpeg" alt="Satoru Gojo">
+        <h3>Satoru Gojo – The Strongest Sorcerer</h3>
+        <p>With nearly unstoppable cursed techniques, Gojo is a fan favorite. His mastery of the Limitless Technique and his iconic Infinity ability make him a formidable ally or opponent. As Gojo, players can experience god-like powers with immense destructive potential.</p>
+        <ul>
+            <li>Infinity</li>
+            <li>Hollow Purple</li>
+            <li>Domain Expansion: Unlimited Void</li>
+        </ul>
+    </div>
+
+    <!-- Yuji Itadori Character Description -->
+    <div class="character-description" id="yuji-description">
+        <img src="img2.jpeg" alt="Yuji Itadori">
+        <h3>Yuji Itadori – The Vessel of Sukuna</h3>
+        <p>As the protagonist, Yuji’s strength lies in his heart and relentless willpower. Unwillingly becoming the vessel for Ryomen Sukuna, the King of Curses, Yuji must balance his humanity with Sukuna's overwhelming power. In the game, you’ll master Yuji’s evolving cursed techniques as you fight for control of his fate.</p>
+        <ul>
+            <li>Black Flash</li>
+            <li>Divergent Fist</li>
+            <li>Sukuna’s Power (Unleash under certain conditions)</li>
+        </ul>
+    </div>
+
+    <!-- Nobara Kugisaki Character Description -->
+    <div class="character-description" id="nobara-description">
+        <img src="img3.jpeg" alt="Nobara Kugisaki">
+        <h3>Nobara Kugisaki – The Cursed Tool Wielder</h3>
+        <p>Bold and unrelenting, Nobara brings her unique style of combat with cursed tools and the Straw Doll Technique. As a player, you can use her abilities to deliver ranged attacks and clever traps against enemies, all while staying true to her fiery spirit.</p>
+        <ul>
+            <li>Straw Doll Technique</li>
+            <li>Hairpin</li>
+            <li>Resonance</li>
+        </ul>
+    </div>
+    
+    <!-- Explore the Cursed World Section -->
+<div class="explore-section">
+    <h2>Explore the Cursed World of Sorcery</h2>
+    <div class="image-container">
+        <img src="img4.jpeg" alt="Cursed World">
+    </div>
+    <p>Step into an expansive, dangerous, and mystical world where cursed energy flows through every corner. The game’s world is inspired by the rich, supernatural universe of Jujutsu Kaisen, blending both familiar and brand-new locations for players to explore, battle, and uncover secrets.</p>
+
+    <h3>Key Locations</h3>
+    <p><strong>Tokyo Jujutsu High:</strong> The prestigious institution where sorcerers are trained, Tokyo Jujutsu High is a hub of activity in the game. Here, players will meet key characters, receive missions, and uncover lore about the sorcerer world. The high school acts as a safe zone where players can upgrade their skills, manage their cursed techniques, and engage in PvE and PvP training.</p>
+    <ul>
+        <li>Training Grounds: Test your cursed techniques and abilities against fellow sorcerers or AI opponents.</li>
+        <li>Mission Hub: Take on story-driven quests or daily challenges that will guide your journey through the cursed world.</li>
+    </ul>
+    <p><strong>Cursed Zones:</strong> These are dangerous areas tainted with cursed energy, where cursed spirits roam freely. Cursed Zones are high-risk, high-reward locations filled with puzzles, boss fights, and hidden treasures. Each zone has its unique environment, cursed spirits, and lore waiting to be uncovered.</p>
+    <ul>
+        <li><strong>Shibuya District:</strong> After the devastating events of the Shibuya Incident, the district is now a high-level cursed zone filled with powerful cursed spirits and decaying urban landscapes. It’s a must-explore area for those seeking intense battles.</li>
+        <li><strong>Forest of Shadows:</strong> A dark, eerie location where players must navigate through twisted forests filled with traps and lurking enemies. Perfect for players who prefer stealth and strategy.</li>
+    </ul>
+</div>
+
+<!-- CSS for centering the image -->
+<style>
+    .explore-section {
+        padding: 100px 20px;
+        text-align: center;
+        background-color: #222;
+        color: white;
+    }
+
+    .explore-section h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .explore-section p {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+    }
+
+    .image-container {
+        text-align: center; /* Center the image */
+        margin: 20px 0; /* Add some margin for spacing */
+    }
+
+    .explore-section img {
+        width: 100%; /* Make the image responsive */
+        max-width: 600px; /* Limit the maximum width */
+        height: auto; /* Maintain aspect ratio */
+    }
+</style>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Jujutsu Kaisen: Rise of Cursed Sorcery. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Scroll Animation -->
+    <script>
+        window.addEventListener('scroll', function() {
+            const characterSection = document.getElementById('characters');
+            const gojoDescription = document.getElementById('gojo-description');
+            const yujiDescription = document.getElementById('yuji-description');
+            const nobaraDescription = document.getElementById('nobara-description');
+
+            // Check if we scrolled past the "Meet the Characters" section
+            const characterSectionPosition = characterSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.5;
+
+            if (characterSectionPosition < screenPosition) {
+                gojoDescription.style.display = 'block';
+                yujiDescription.style.display = 'block';
+                nobaraDescription.style.display = 'block';
+            }
+        });
+    </script>
+
+</body>
+</html>

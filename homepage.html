@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jujutsu Kaisen: Rise of Cursed Sorcery</title>
+    <style> 
+        /* Header Styles */
+header {
+    background-color: #222;
+    padding: 20px 40px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+* {
+    font-family: "Inter Tight", sans-serif;
+    
+}
+body {
+    background-color: #000;
+    background-blend-mode: lighten;
+    
+}
+main {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.logo h1 {
+    font-size: 24px;
+    background-blend-mode: lighten;
+    color: #00aaff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #f0f0f0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #00aaff;
+}
+
+.cta-buttons {
+    display: flex;
+}
+
+.play-now-btn1, .download-btn {
+    background-color: #00aaff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.play-now-btn1:hover, .download-btn:hover {
+    background-color: #008ecc;
+}
+
+/* Hero Section Styles */
+.hero {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center;
+    height: 100vh;
+    padding: 0 5%;
+    position: relative;
+    background-color: #000; /* Optional background color */
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    max-width: 50%;
+    padding-left: 2%; /* Closer to the left */
+    text-align: left;
+    margin-left: 0; /* No extra left margin */
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-left: 0; /* Align h1 closer to the left */
+    z-index: 2;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-left: 0; /* Align p closer to the left */
+    margin: 20px 0; /* Balanced top and bottom margin */
+    position: relative;
+    z-index: 2;
+}
+
+/* Video Styling */
+
+.background-video {
+    flex: 0.5;
+    position: absolute;
+    right: 20px; /* Move video 10px to the left */
+    width: 60%;
+    z-index: 0;
+    object-fit: cover;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5); /* Adds a shadow effect */
+    border-radius: 20px;
+    margin-top: -10px; /* Move video slightly above */
+}
+
+/* Button Styles */
+.btn {
+    background-color: #007bff; /* Blue for the Play Now button */
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 14x;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    text-decoration: none; /* Remove underline */
+    margin: 0 10px; /* Spacing between buttons */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Secondary Button Styles */
+.btn.secondary {
+    background-color: rgba(255, 255, 255, 0.5); /* Translucent for Learn More button */
+    color: #222; /* Dark text for contrast */
+    border: 1px solid #ccc; /* Light border for visibility */
+}
+
+.btn.secondary:hover {
+    background-color: rgba(255, 255, 255, 0.7); /* Slightly darker translucent on hover */
+}
+
+.hero1 {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center;
+    height: 100vh;
+    padding: 0 5%;
+    position: relative;
+    background-color: #000; /* Optional background color */
+    overflow: hidden; /* Prevent overflow */
+}
+
+.content1 {
+    position: relative;
+    z-index: 1;
+    color: white;
+    max-width: 60%; /* Reduced width for better text alignment */
+    padding-right: 2%; /* Closer to the right */
+    text-align: left; /* Text aligned to the right */
+    margin-left: 10px; /* Push the content away from the left side */
+    backdrop-filter: blur(5px); /* Add a blur effect behind the text */
+    padding: 20px; /* Add padding for better spacing */
+    border-radius: 10px; /* Rounded corners for the content box */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8); /* Optional shadow for depth */
+}
+
+/* Image Styling */
+.background-image1 {
+    flex: 0.5;
+    position: absolute;
+    left: 10px; /* Move image closer to the left side */
+    margin-left: 20px;
+    width: auto; /* Adjust width as needed */
+    height: 100%; /* Ensure the image covers the height */
+    object-fit: cover; /* Maintain aspect ratio while covering */
+    z-index: 0;
+    border-radius: 20px; /* Optional rounded corners */
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5); /* Adds a shadow effect */
+}
+
+.hero2 {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center;
+    height: 100vh;
+    padding: 0 5%;
+    position: relative;
+    background-color: #000; /* Optional background color */
+    overflow: hidden; /* Prevent overflow */
+}
+
+.content2 {
+    flex: 0 0 40%; /* Ensures the content takes exactly 40% of the width */
+    position: relative;
+    z-index: 1;
+    color: white;
+    padding-left: 2%; /* Closer to the left */
+    text-align: left; /* Text aligned to the left */
+    margin-right: 10px; /* Push the content away from the right side */
+    backdrop-filter: blur(5px); /* Add a blur effect behind the text */
+    padding: 20px; /* Add padding for better spacing */
+    border-radius: 10px; /* Rounded corners for the content box */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8); /* Optional shadow for depth */
+}
+
+/* Image Styling */
+.background-image2 {
+    flex: 0 0 50%; /* Ensures the image takes 50% of the width */
+    position: absolute;
+    right: 10px; /* Move image closer to the right side */
+    margin-right: 20px;
+    width: auto; /* Adjust width as needed */
+    height: 60%; /* Ensure the image covers the height */
+    object-fit: cover; /* Maintain aspect ratio while covering */
+    z-index: 0;
+    border-radius: 20px; /* Optional rounded corners */
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5); /* Adds a shadow effect */
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: #fff;
+}
+
+.news-section {
+  padding: 20px;
+  text-align: center;
+  margin-left: 10px;
+    margin-right: 10px;
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.title-section {
+  text-align: left;
+  max-width: 70%;
+}
+
+.news-header h1 {
+  font-size: 2rem;
+}
+
+.intro-text {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.news-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.news-card {
+  background-color: #1c1c1c;
+  width: 30%;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.news-card img {
+  width: 100%;
+  height: auto;
+}
+
+.news-content {
+  padding: 15px;
+}
+
+.news-content h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.news-content p {
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+  color: #999;
+}
+
+.learn-more-btn {
+  background-color: #444;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.learn-more-btn:hover {
+  background-color: #666;
+}
+
+/* Hidden cards by default */
+.hidden {
+  display: none;
+}
+
+/* View All Button */
+.view-all-btn {
+  background-color: #444;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.view-all-btn:hover {
+  background-color: #666;
+}
+
+.hide-btn {
+  background-color: #444;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: none; /* Initially hidden */
+}
+
+.hide-btn:hover {
+  background-color: #666;
+}
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script>
+        function underDevelopment() {
+            alert("This webpage is under development.");
+        }
+    </script>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="jjk.png" width="200px">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="abt.html">About the Game</a></li>
+                    <li><a href="#" onclick="underDevelopment()">Play</a></li>
+                    <li><a href="#" onclick="underDevelopment()">Leaderboards</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="#" onclick="underDevelopment()">Support</a></li>
+                    <li><a href="acc.html">Account Settings</a></li>
+                </ul>
+            </nav>
+            <div class="cta-buttons">
+                <button class="play-now-btn1">Play Now</button>
+                <button class="download-btn">Download</button>
+            </div>
+        </div>
+    </header>
+    
+
+    <section class="hero">
+        <video autoplay muted loop class="background-video">
+            <source src="vid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="content">
+            <h2>JUJUTSU KAISEN: RISE OF SOCRCERY</h2>
+            <h1>Welcome to the World of Cursed Sorcery!</h1>
+            <p>Join powerful sorcerers as they battle against cursed spirits in an epic adventure. Are you ready to become a true sorcerer?</p>
+            <br><div class="buttons">
+                <a href="#play-now-btn1" class="btn">Play Now</a>
+                <a href="#learn-more" class="btn secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="news-section">
+        <!-- Header section with flexbox for alignment -->
+        <div class="news-header">
+          <div class="title-section">
+            <h1>Latest Updates</h1>
+            <p class="intro-text">
+              Stay ahead of the game with recent patch notes, bug fixes, and new features that will keep your gameplay fresh and exciting.
+            </p>
+          </div>
+          <!-- View All Button -->
+          <button class="view-all-btn" id="viewAllBtn">View All</button>
+          <!-- Hide Button (hidden by default) -->
+          <button class="hide-btn" id="hideBtn" style="display: none;">Hide</button>
+        </div>
+      
+        <div class="news-cards">
+          <!-- First 3 news items (visible by default) -->
+          <div class="news-card">
+            <img src="chr2.png" alt="Patch v1.1.0">
+            <div class="news-content">
+              <h3>Patch v1.1.0</h3>
+              <p>New cursed techniques, weapon upgrades, and bug fixes!</p>
+              <button class="learn-more-btn">Learn more</button>
+            </div>
+          </div>
+      
+          <div class="news-card">
+            <img src="chr3.jpg" alt="Seasonal Event">
+            <div class="news-content">
+              <h3>Seasonal Event: Cursed Energy Storm</h3>
+              <p>Join the event for limited-time rewards and exclusive in-game items.</p>
+              <button class="learn-more-btn">Learn more</button>
+            </div>
+          </div>
+      
+          <div class="news-card">
+            <img src="chr1.jpg" alt="New Playable Characters">
+            <div class="news-content">
+              <h3>New Playable Characters</h3>
+              <p>Step into the shoes of iconic characters like Gojo Satoru and Sukuna.</p>
+              <button class="learn-more-btn">Learn more</button>
+            </div>
+          </div>
+      
+          <!-- Remaining 2 news items (hidden initially) -->
+          <div class="news-card hidden">
+            <img src="chr5.jpg" alt="New Story Chapter">
+            <div class="news-content">
+              <h3>New Story Chapter</h3>
+              <p>Continue your adventure in the Tokyo Metropolitan Exorcism arc.</p>
+              <button class="learn-more-btn">Learn more</button>
+            </div>
+          </div>
+      
+          <div class="news-card hidden">
+            <img src="chr4.jpg" alt="PvP Arena Update">
+            <div class="news-content">
+              <h3>PvP Arena Update</h3>
+              <p>Compete in revamped cursed domain arenas with enhanced rewards.</p>
+              <button class="learn-more-btn">Learn more</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    
+      <section class="hero1">
+        <img src="bg.jpg" alt="Cursed Energy" class="background-image1">
+        <div class="content1">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Logo_de_Jujutsu_Kaisen_0_La_pel%C3%ADcula.png" width="200px" height="auto" alt="logo">
+          <h1>Welcome to the Epic Journey</h1>
+          <p style="text-align: justify;">
+              In an alternate timeline of the Jujutsu Kaisen universe, a new generation of jujutsu sorcerers rises to confront the dark forces of cursed spirits. As they delve into a world filled with betrayal, corruption, and personal sacrifice, players must navigate treacherous alliances and uncover hidden conspiracies that threaten both the jujutsu society and the human realm.
+          <br><br></p>
+          <p style="text-align: justify;">
+              Prepare to embark on a thrilling journey of combat, exploration, and moral dilemmas. Customize your character, master powerful cursed techniques, and engage in epic battles against formidable foes. The fate of both worlds rests in your hands — will you rise to the challenge or succumb to the shadows?
+          </p>
+              
+        </div>
+    </section>
+    
+
+    <section class="hero2">
+      <img src="bg2.png" alt="Cursed Energy" class="background-image2">
+      <div class="content1">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Logo_de_Jujutsu_Kaisen_0_La_pel%C3%ADcula.png" width="200px" height="auto" alt="logo">
+        <h1>Jujutsu Kaisen: Rise of Sorcery</h1>
+<p style="text-align: justify;">
+    Step into the world of <strong>Jujutsu Kaisen: Rise of Sorcery</strong>, where sorcerers, cursed spirits, and ancient magic clash in a dynamic, ever-evolving universe. As a jujutsu sorcerer, you’ll master powerful cursed techniques, unravel hidden conspiracies, and face enemies that threaten both sorcerer society and the human world.
+<br><br></p>
+<p style="text-align: justify;">
+    Join friends or challenge rivals in a seamless online experience, accessible directly from our website. Engage in co-op missions, epic cursed battles, or competitive duels in high-stakes arenas. With new content, cursed objects, and expansions regularly added, you can explore the rich lore and strategic combat that defines the world of sorcery—anytime, anywhere. The power is in your hands.
+</p>
+
+            
+      </div>
+  </section>
+    
+    <section class="hero1">
+        <video autoplay muted loop class="background-video1">
+            <source src="vid3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="content1">
+            <h2>Exclusive New Content</h2>
+                <p>Story Arcs and Expansions: From mysterious cursed objects to epic boss battles, the storyline unfolds across multiple chapters with breathtaking scale and intensity.<br>Character Customization: Define your sorcerer with unique cursed techniques, appearance, and story choices.<br>Allies and Rivals: Meet new powerful allies, face tragic villains, and uncover betrayals that test your resolve.</p>
+                </div>
+    </section>
+        
+
+
+    <section class="hero">
+        <video autoplay muted loop class="background-video">
+            <source src="vid2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="content">
+            <h2>Exclusive New Content</h2>
+                <p>Story Arcs and Expansions: <br>From mysterious cursed objects to epic boss battles, the storyline unfolds across multiple chapters with breathtaking scale and intensity.<br>Character Customization: <br>Define your sorcerer with unique cursed techniques, appearance, and story choices.<br>Allies and Rivals: <br>Meet new powerful allies, face tragic villains, and uncover betrayals that test your resolve.</p>
+            </div>
+    </section>
+    
+    <section class="hero1">
+        <video autoplay muted loop class="background-video1">
+            <source src="vid2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="content1">
+            <h2>Stunning Visuals</h2>
+                
+            <h2>Multiplayer and PvP Arenas</h2>
+            <p>Co-Op Story Mode: Drop-in and out with friends to face off against powerful cursed spirits and rogue sorcerers.<br>PvP Arenas: Challenge players in dynamic, destructible environments inspired by cursed domains. Rank up and earn exclusive rewards.</p>
+        <p>Explore beautifully crafted worlds that blend real-world Japan with dark, cursed dimensions. With next-gen graphics and an immersive soundscape, each battle and story moment is brought to life in stunning detail.</p>
+        </div>
+    </section>
+    
+
+    </div>
+    <script>
+    // JavaScript to reveal hidden cards when 'View All' is clicked and collapse when 'Hide' is clicked
+document.getElementById('viewAllBtn').addEventListener('click', function () {
+  const hiddenCards = document.querySelectorAll('.hidden');
+  
+  hiddenCards.forEach(card => {
+    card.style.display = 'block';
+  });
+
+  // Hide the 'View All' button after clicking
+  this.style.display = 'none';
+  
+  // Show the 'Hide' button after clicking 'View All'
+  document.getElementById('hideBtn').style.display = 'inline-block';
+});
+
+document.getElementById('hideBtn').addEventListener('click', function () {
+  const hiddenCards = document.querySelectorAll('.hidden');
+  
+  hiddenCards.forEach(card => {
+    card.style.display = 'none';
+  });
+
+  // Show the 'View All' button again when 'Hide' is clicked
+  document.getElementById('viewAllBtn').style.display = 'inline-block';
+
+  // Hide the 'Hide' button after clicking
+  this.style.display = 'none';
+});
+
+</script>
+    <!-- Footer Section 
+    <footer>
+        <div class="content">
+            <p>Experience the world of cursed sorcery like never before. Join the battle today!</p>
+        </div>
+    </footer>-->
+
+</body>
+</html>
