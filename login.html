@@ -1,90 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Registration and Login</title>
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: black;
-            color: white;
-            text-align: center;
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+        :root {
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --background-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --error-color: #ef4444;
+            --success-color: #22c55e;
+            --input-bg: #334155;
+            --input-border: #475569;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-        }
-        .container {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #333;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-            background: #f1f1f1;
-            color: black;
             box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000000; /* Changed from var(--background-dark) to black */
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(79, 70, 229, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(79, 70, 229, 0.15) 0%, transparent 50%);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            padding: 35px;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        .logo {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo img {
+            height: 60px;
+            object-fit: contain;
+        }
+
+        h1 {
+            margin-bottom: 25px;
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 14px 16px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25);
+        }
+
+        input::placeholder {
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
+
+        .show-password {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            /* Center vertically relative to input */
+            transform: translateY(-50%);
+            /* Adjust for perfect centering */
+            color: var(--text-muted);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 24px;
+            width: 24px;
+            padding: 0;
+            transition: color 0.2s;
+        }
+
+        .show-password:hover {
+            color: var(--text-light);
+        }
+
+        .error {
+            color: var(--error-color);
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: rgba(239, 68, 68, 0.1);
+            border-radius: 6px;
+            text-align: left;
+            font-size: 14px;
+            display: none;
+        }
+
+        .error.visible {
+            display: block;
+        }
+
         button {
             width: 100%;
-            padding: 12px;
-            background-color: #4285F4;
+            padding: 14px;
+            background-color: var(--primary-color);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
             margin-top: 10px;
         }
+
         button:hover {
-            opacity: 0.9;
+            background-color: var(--primary-hover);
         }
-        h1 {
-            margin-bottom: 20px;
-            font-size: 1.4em;
+
+        button:active {
+            transform: scale(0.98);
         }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid var(--input-border);
+        }
+
+        .divider::before {
+            margin-right: 10px;
+        }
+
+        .divider::after {
+            margin-left: 10px;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--input-bg);
+            border: 1px solid var(--input-border);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .social-btn:hover {
+            background-color: rgba(79, 70, 229, 0.1);
+            transform: translateY(-3px);
+        }
+
         .toggle-form {
-            margin-top: 15px;
+            margin-top: 25px;
+            text-align: center;
         }
+
         .toggle-form p {
-            font-size: 0.9em;
+            color: var(--text-muted);
+            font-size: 14px;
         }
-        .error {
-            color: red;
-            margin-bottom: 15px;
+
+        .toggle-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            margin-left: 5px;
         }
+
+        .toggle-link:hover {
+            text-decoration: underline;
+        }
+
+        .password-requirements {
+            margin-top: 5px;
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: left;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
         /* Responsive adjustments */
         @media (max-width: 500px) {
             .container {
-                margin: 20px auto;
-                padding: 15px;
+                padding: 25px;
             }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            input[type="text"],
+            input[type="password"],
             button {
-                font-size: 0.9em;
-                padding: 10px;
+                padding: 12px;
             }
         }
     </style>
 </head>
-<body>
 
-    <div class="container" role="main">
-        <h1 id="form-title">Register</h1>
+<body>
+    <div class="container animate-in" role="main">
+        <div class="logo">
+            <img src="jjk.png" alt="jjk">
+        </div>
+
+        <h1 id="form-title">Create Your Account</h1>
+
+        <div class="error" id="error-message" aria-live="polite"></div>
+
         <form id="auth-form">
-            <div class="error" id="error-message" aria-live="polite"></div>
-            <input type="text" id="username" placeholder="Username" aria-label="Username" required>
-            <input type="password" id="password" placeholder="Password" aria-label="Password" required>
-            <input type="password" id="repeat-password" placeholder="Repeat Password" aria-label="Repeat Password" style="display: none;" pattern=".{6,}" title="Must be at least 6 characters long">
-            <button type="submit" id="submit-button">Register</button>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter your username" aria-label="Username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" aria-label="Password" required>
+                <button type="button" class="show-password" id="toggle-password"
+                    aria-label="Toggle password visibility">
+                    <!-- Eye icon for show password -->
+                    <svg id="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 5C7.45818 5 3.57886 7.91218 2 12C3.57886 16.0878 7.45818 19 12 19C16.5418 19 20.4211 16.0878 22 12C20.4211 7.91218 16.5418 5 12 5Z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <!-- Eye-off icon for hide password (initially hidden) -->
+                    <svg id="eye-off-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path
+                            d="M2 12C3.57886 16.0878 7.45818 19 12 19C13.3381 19 14.6175 18.7855 15.8057 18.397M9 14.6285C7.8044 13.8185 7 12.498 7 11C7 8.23858 9.23858 6 12 6C13.498 6 14.8185 6.8044 15.6285 8M3 3L21 21"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div id="password-requirements" class="password-requirements" style="display: none;">
+                    Password must be at least 6 characters long
+                </div>
+            </div>
+
+            <div class="form-group" id="repeat-password-group">
+                <label for="repeat-password">Confirm Password</label>
+                <input type="password" id="repeat-password" placeholder="Confirm your password"
+                    aria-label="Repeat Password" required>
+            </div>
+
+            <button type="submit" id="submit-button">Create Account</button>
         </form>
+
+        <div class="divider">OR</div>
+
+        <div class="social-login">
+            <div class="social-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M22.5 12.0645C22.5 11.0326 22.4355 10.0436 22.2936 9.08709H12V13.255H17.9419C17.7871 14.36 17.0784 15.7664 15.7419 16.7345L15.7226 16.8626L19.1 19.4326L19.3097 19.4535C21.4 17.5645 22.5 15.0064 22.5 12.0645Z"
+                        fill="#4285F4" />
+                    <path
+                        d="M12 22.5C15.0242 22.5 17.5613 21.5097 19.3097 19.4532L15.7419 16.7342C14.8064 17.3694 13.5484 17.8148 12 17.8148C9.13548 17.8148 6.70323 15.9 5.81452 13.28L5.69677 13.2897L2.19677 15.9577L2.15645 16.073C3.89355 19.743 7.65 22.5 12 22.5Z"
+                        fill="#34A853" />
+                    <path
+                        d="M5.81452 13.2803C5.59677 12.5803 5.46774 11.831 5.46774 11.0613C5.46774 10.2903 5.59677 9.54227 5.80645 8.84227L5.80081 8.70704L2.25484 6.00005L2.15645 6.05002C1.30645 7.5242 0.806445 9.22583 0.806445 11.0613C0.806445 12.8968 1.30645 14.5984 2.15645 16.0726L5.81452 13.2803Z"
+                        fill="#FBBC05" />
+                    <path
+                        d="M12 4.30645C13.8145 4.30645 15.0726 5.12903 15.8032 5.8C15.8032 5.8 15.8032 5.8 15.8113 5.80806L19.0323 2.66129C17.5 1.24516 15.0242 0.5 12 0.5C7.65 0.5 3.89355 3.25645 2.15645 6.91935L5.80645 9.71129C6.70323 7.09129 9.13548 4.30645 12 4.30645Z"
+                        fill="#EB4335" />
+                </svg>
+            </div>
+            <div class="social-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 2C6.477 2 2 6.477 2 12C2 16.991 5.657 21.128 10.438 21.879V14.89H7.898V12H10.438V9.797C10.438 7.291 11.93 5.907 14.215 5.907C15.309 5.907 16.453 6.102 16.453 6.102V8.562H15.193C13.95 8.562 13.563 9.333 13.563 10.124V12H16.336L15.893 14.89H13.563V21.879C18.343 21.129 22 16.99 22 12C22 6.477 17.523 2 12 2Z"
+                        fill="#1877F2" />
+                </svg>
+            </div>
+            <div class="social-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 1.5C6.20156 1.5 1.5 6.32344 1.5 12.2672C1.5 17.025 4.50937 21.0562 8.68125 22.4812C8.73977 22.494 8.79949 22.5002 8.85937 22.5C9.24844 22.5 9.39844 22.2141 9.39844 21.9656C9.39844 21.7078 9.38906 21.0328 9.38437 20.1328C9.03705 20.2142 8.68173 20.2567 8.325 20.2594C6.30469 20.2594 5.84531 18.6891 5.84531 18.6891C5.36719 17.4469 4.67813 17.1516 4.67813 17.1516C3.76406 16.4672 4.67344 16.4531 4.74375 16.4531H4.74844C5.80313 16.5516 6.35625 17.5734 6.35625 17.5734C6.82969 18.4828 7.47656 18.7453 8.04844 18.7453C8.46928 18.7312 8.88047 18.6215 9.25313 18.4266C9.35156 17.7188 9.63281 17.2359 9.94219 16.9641C7.88906 16.6922 5.72344 15.7734 5.72344 11.7C5.72344 10.5281 6.14531 9.56719 6.37969 9.16875C6.36828 9.07839 6.36783 8.98709 6.37836 8.89688C6.25313 8.28281 6.43594 7.1625 6.49687 6.93125C6.52715 6.86523 6.57293 6.80712 6.63047 6.76192C6.68801 6.71673 6.75547 6.68583 6.82734 6.675H6.84844C7.21406 6.675 7.96406 6.76406 9.35156 7.68281C10.8329 7.31135 12.3746 7.31135 13.8562 7.68281C15.2438 6.76406 15.9938 6.675 16.3594 6.675H16.3805C16.4525 6.68583 16.5199 6.71673 16.5775 6.76192C16.635 6.80712 16.6808 6.86523 16.7109 6.93125C16.7719 7.1625 16.9547 8.28281 16.8295 8.89688C16.84 8.98709 16.8396 9.07839 16.8281 9.16875C17.0625 9.57187 17.4844 10.5328 17.4844 11.7C17.4844 15.7828 15.3141 16.6875 13.2516 16.9547C13.6359 17.2875 13.9781 17.9437 13.9781 18.9469C13.9781 20.3672 13.9641 21.5859 13.9641 21.9609C13.9641 22.2141 14.1094 22.5 14.4984 22.5C14.5605 22.4999 14.6223 22.4937 14.6828 22.4812C18.8594 21.0562 21.8625 17.0203 21.8625 12.2672C21.8625 6.32344 17.1609 1.5 12 1.5Z"
+                        fill="white" />
+                </svg>
+            </div>
+        </div>
+
         <div class="toggle-form">
-            <p id="toggle-text">Already have an account? <a href="javascript:void(0)" aria-role="button" style="color: #4285F4; text-decoration: underline;">Log In</a></p>
+            <p id="toggle-text">Already have an account? <span class="toggle-link" id="toggle-link">Log In</span></p>
         </div>
     </div>
 
@@ -93,62 +386,138 @@
         const submitButton = document.getElementById('submit-button');
         const formTitle = document.getElementById('form-title');
         const toggleText = document.getElementById('toggle-text');
+        const toggleLink = document.getElementById('toggle-link');
+        const repeatPasswordGroup = document.getElementById('repeat-password-group');
         const repeatPasswordField = document.getElementById('repeat-password');
         const errorMessage = document.getElementById('error-message');
+        const passwordField = document.getElementById('password');
+        const togglePassword = document.getElementById('toggle-password');
+        const passwordRequirements = document.getElementById('password-requirements');
+        const eyeIcon = document.getElementById('eye-icon');
+        const eyeOffIcon = document.getElementById('eye-off-icon');
 
         let isRegistering = true;
-
-        toggleText.addEventListener('click', () => {
-            isRegistering = !isRegistering;
-            if (isRegistering) {
-                formTitle.textContent = "Register";
-                submitButton.textContent = "Register";
-                repeatPasswordField.style.display = "block";
-                toggleText.innerHTML = 'Already have an account? <a href="javascript:void(0)" style="color: #4285F4; text-decoration: underline;">Log In</a>';
+        // Toggle password visibility
+        togglePassword.addEventListener('click', () => {
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                eyeIcon.style.display = 'none';
+                eyeOffIcon.style.display = 'block';
             } else {
-                formTitle.textContent = "Log In";
-                submitButton.textContent = "Log In";
-                repeatPasswordField.style.display = "none";
-                toggleText.innerHTML = 'Don\'t have an account? <a href="javascript:void(0)" style="color: #4285F4; text-decoration: underline;">Register</a>';
+                passwordField.type = 'password';
+                eyeIcon.style.display = 'block';
+                eyeOffIcon.style.display = 'none';
             }
-            errorMessage.textContent = ""; // Clear any error messages
         });
 
-        authForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const repeatPassword = repeatPasswordField.value;
+        // Show password requirements when password field is focused
+        passwordField.addEventListener('focus', () => {
+            if (isRegistering) {
+                passwordRequirements.style.display = 'block';
+            }
+        });
 
-            if (isRegistering && password !== repeatPassword) {
-                errorMessage.textContent = "Passwords do not match!";
-                return;
+        // Hide password requirements when focus is lost
+        passwordField.addEventListener('blur', () => {
+            passwordRequirements.style.display = 'none';
+        });
+
+        // Toggle between login and register forms
+        toggleLink.addEventListener('click', function () {
+            isRegistering = !isRegistering;
+
+            // Reset form
+            authForm.reset();
+            errorMessage.textContent = "";
+            errorMessage.classList.remove('visible');
+
+            if (isRegistering) {
+                formTitle.textContent = "Create Your Account";
+                submitButton.textContent = "Create Account";
+                repeatPasswordGroup.style.display = "block";
+                toggleText.innerHTML = 'Already have an account? <span class="toggle-link" id="toggle-link">Log In</span>';
+            } else {
+                formTitle.textContent = "Welcome Back";
+                submitButton.textContent = "Log In";
+                repeatPasswordGroup.style.display = "none";
+                toggleText.innerHTML = 'Don\'t have an account? <span class="toggle-link" id="toggle-link">Create Account</span>';
             }
 
-            const url = isRegistering ? 'http://localhost:5000/register' : 'http://localhost:5000/login';
-            
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ username, password })
-                });
+            // Re-assign event listener to the new toggle link
+            document.getElementById('toggle-link').addEventListener('click', function () {
+                toggleLink.click(); // Trigger the main toggle function
+            });
+        });
+        // Form submission
+            authForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
 
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    throw new Error(errorText);
+                // Validate form
+                if (username.trim() === '') {
+                    showError("Username is required");
+                    return;
                 }
 
-                const data = await response.json();
-                alert(isRegistering ? "Registration successful!" : "Login successful!");
-                // Handle successful login or registration
-            } catch (error) {
-                errorMessage.textContent = error.message;
-            }
-        });
-    </script>
+                if (password.trim() === '') {
+                    showError("Password is required");
+                    return;
+                }
 
+                if (isRegistering) {
+                    const repeatPassword = repeatPasswordField.value;
+
+                    if (password.length < 6) {
+                        showError("Password must be at least 6 characters long");
+                        return;
+                    }
+
+                    if (password !== repeatPassword) {
+                        showError("Passwords do not match");
+                        return;
+                    }
+                    
+                    // Store user data in localStorage for demo purposes
+                    localStorage.setItem('jjk_username', username);
+                    localStorage.setItem('jjk_password', password); // Note: In a real app, never store passwords in plain text
+                }
+                else {
+                    // Simple login check against localStorage
+                    const storedUsername = localStorage.getItem('jjk_username');
+                    const storedPassword = localStorage.getItem('jjk_password');
+                    
+                    if (username !== storedUsername || password !== storedPassword) {
+                        showError("Invalid username or password");
+                        return;
+                    }
+                }
+
+                // Show loading state
+                submitButton.textContent = isRegistering ? "Creating Account..." : "Logging In...";
+                submitButton.disabled = true;
+
+                // Show success state
+                errorMessage.textContent = isRegistering ? "Account created successfully!" : "Login successful!";
+                errorMessage.style.color = "var(--success-color)";
+                errorMessage.style.backgroundColor = "rgba(34, 197, 94, 0.1)";
+                errorMessage.classList.add('visible');
+
+                // Redirect to homepage after a short delay
+                setTimeout(() => {
+                    // Redirect to homepage
+                    window.location.href = "homepage.html";
+                }, 1500);
+            });
+
+        // Helper function to show error messages
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.color = "var(--error-color)";
+            errorMessage.style.backgroundColor = "rgba(239, 68, 68, 0.1)";
+            errorMessage.classList.add('visible');
+        }
+    </script>
 </body>
+
 </html>
