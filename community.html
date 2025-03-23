@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jujutsu Kaisen: Rise of Cursed Sorcery</title>
+    <style>
+         /* Header Styles */
+    header {
+      background-color: #222;
+      padding: 20px 40px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    * {
+      font-family: "Inter Tight", sans-serif;
+
+    }
+
+    body {
+      background-color: #000;
+      background-blend-mode: lighten;
+
+    }
+
+    main {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .logo h1 {
+      font-size: 24px;
+      background-blend-mode: lighten;
+      color: #00aaff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: #f0f0f0;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #00aaff;
+    }
+    .cta-buttons {
+      display: flex;
+    }
+
+    .play-now-btn1,
+    .download-btn {
+      background-color: #00aaff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      margin-left: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .play-now-btn1:hover,
+    .download-btn:hover {
+      background-color: #008ecc;
+    } body {
+            background-color: #000;
+            color: #fff;
+            font-family: "Inter Tight", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            margin: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .section h2 {
+            color: #e63946;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .section p {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section ul li {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #222;
+            padding: 20px;
+            text-align: center;
+            color: #f0f0f0;
+            border-top: 2px solid #444;
+        }
+
+        footer p {
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Community Page Styles */
+        .community-container {
+            display: flex;
+            margin-top: 30px;
+        }
+
+        .sidebar {
+            width: 280px;
+            background-color: #111;
+            border-radius: 10px;
+            padding: 20px;
+            margin-right: 20px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-section h3 {
+            color: #00aaff;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            color: #f0f0f0;
+            text-decoration: none;
+            padding: 8px 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            transition: all 0.2s;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: #222;
+            color: #00aaff;
+        }
+
+        .sidebar-menu a.active {
+            background-color: #00aaff;
+            color: #fff;
+        }
+
+        .trending-tags {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .trending-tags span {
+            background-color: #222;
+            color: #00aaff;
+            padding: 5px 10px;
+            border-radius: 15px;
+            margin: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .trending-tags span:hover {
+            background-color: #00aaff;
+            color: #fff;
+        }
+
+        .feed {
+            flex-grow: 1;
+        }
+
+        .post-composer {
+            background-color: #111;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .post-composer textarea {
+            width: 100%;
+            background-color: #222;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            resize: none;
+            height: 100px;
+            font-family: "Inter Tight", sans-serif;
+        }
+
+        .post-composer textarea:focus {
+            outline: 1px solid #00aaff;
+        }
+
+        .post-composer-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .post-attachments {
+            display: flex;
+        }
+
+        .attachment-btn {
+            background-color: transparent;
+            color: #f0f0f0;
+            border: none;
+            padding: 5px 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .attachment-btn i {
+            margin-right: 5px;
+        }
+
+        .attachment-btn:hover {
+            color: #00aaff;
+        }
+
+        .post-button {
+            background-color: #00aaff;
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .post-button:hover {
+            background-color: #008ecc;
+        }
+
+        .post {
+            background-color: #111;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .post-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-color: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00aaff;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .post-user-info {
+            flex-grow: 1;
+        }
+
+        .post-username {
+            color: #f0f0f0;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+        }
+
+        .post-meta {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .post-content {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .post-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: #222;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+        }
+
+        .post-footer {
+            display: flex;
+            border-top: 1px solid #222;
+            padding-top: 15px;
+        }
+
+        .post-action {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            padding: 8px 0;
+            cursor: pointer;
+            transition: color 0.2s;
+            border-radius: 5px;
+        }
+
+        .post-action:hover {
+            color: #00aaff;
+            background-color: #1a1a1a;
+        }
+
+        .post-action i {
+            margin-right: 5px;
+        }
+
+        .post-action.liked {
+            color: #e63946;
+        }
+
+        .post-comments {
+            margin-top: 15px;
+            border-top: 1px solid #222;
+            padding-top: 15px;
+        }
+
+        .comment {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .comment-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-color: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00aaff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .comment-body {
+            flex-grow: 1;
+            background-color: #1a1a1a;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .comment-username {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .comment-text {
+            font-size: 0.95rem;
+        }
+
+        .comment-form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .comment-form textarea {
+            flex-grow: 1;
+            background-color: #222;
+            border: none;
+            border-radius: 20px;
+            color: #fff;
+            padding: 10px 15px;
+            resize: none;
+            height: 40px;
+            font-family: "Inter Tight", sans-serif;
+            margin-right: 10px;
+        }
+
+        .comment-form textarea:focus {
+            outline: 1px solid #00aaff;
+        }
+
+        .comment-submit {
+            background-color: #00aaff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .comment-submit:hover {
+            background-color: #008ecc;
+        }
+
+        .page-title {
+            color: #00aaff;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
+        }
+
+        .notification-badge {
+            background-color: #e63946;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+
+        /* Added for toggle comments functionality */
+        .comments-container {
+            display: none;
+        }
+
+        .comments-container.visible {
+            display: block;
+        }
+
+        /* For the icons */
+        .icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-color: #888;
+            margin-right: 5px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #111;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+          <div class="logo">
+            <img src="jjk.png" width="200px">
+          </div>
+          <nav>
+            <ul class="nav-links">
+              <li><a href="homepage.html">Home</a></li>
+              <li><a href="abt.html">About the Game</a></li>
+              <li><a href="game.html">Play</a></li>
+              <li><a href="leaderboard.html"">Leaderboards</a></li>
+              <li><a href="community.html">Community</a></li>
+              <li><a href="support.html">Support</a></li>
+              <li><a href="acc.html">Account Settings</a></li>
+            </ul>
+          </nav>
+          <div class="cta-buttons">
+            <button class="play-now-btn1">Play Now</button>
+            <button class="download-btn">Download</button>
+          </div>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="page-title">JJK Community</h1>
+
+        <div class="community-container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Navigation</h3>
+                    <div class="sidebar-menu">
+                        <a href="#" class="active">Community Feed</a>
+                        <a href="#">My Posts</a>
+                        <a href="#">Notifications <span class="notification-badge">3</span></a>
+                        <a href="#">Saved Posts</a>
+                        <a href="#">Following</a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Trending Tags</h3>
+                    <div class="trending-tags">
+                        <span>#Gojo</span>
+                        <span>#Sukuna</span>
+                        <span>#Itadori</span>
+                        <span>#DomainExpansion</span>
+                        <span>#JJKSeason2</span>
+                        <span>#CursedTechnique</span>
+                        <span>#Megumi</span>
+                        <span>#Nobara</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Top Players</h3>
+                    <div class="sidebar-menu">
+                        <a href="#">GojoDomain <span style="float:right">★★★★★</span></a>
+                        <a href="#">ItadoriYuji <span style="float:right">★★★★☆</span></a>
+                        <a href="#">MegumiShadows <span style="float:right">★★★★☆</span></a>
+                        <a href="#">NobaraHammer <span style="float:right">★★★☆☆</span></a>
+                        <a href="#">InfiniteVoid <span style="float:right">★★★☆☆</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Feed -->
+            <div class="feed">
+                <!-- Post Composer -->
+                <div class="post-composer">
+                    <textarea placeholder="Share your JJK moments..."></textarea>
+                    <div class="post-composer-footer">
+                        <div class="post-attachments">
+                            <button class="attachment-btn"><span class="icon">P</span> Photo</button>
+                            <button class="attachment-btn"><span class="icon">V</span> Video</button>
+                            <button class="attachment-btn"><span class="icon">G</span> GIF</button>
+                            <button class="attachment-btn"><span class="icon">E</span> Event</button>
+                        </div>
+                        <button class="post-button">Post</button>
+                    </div>
+                </div>
+
+                <!-- Posts -->
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-avatar">JD</div>
+                        <div class="post-user-info">
+                            <div class="post-username">JujutsuDomain</div>
+                            <div class="post-meta">2 hours ago · Tokyo Jujutsu High</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        Just unlocked Gojo's Domain Expansion! The animations are INSANE! 😱 Anyone else reached this level yet? #Limitless #InfiniteVoid
+                    </div>
+                    <div class="post-image">
+                        [Gojo's Domain Expansion Screenshot]
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-action liked" onclick="toggleLike(this)">
+                            <span class="icon">♥</span> 156 Likes
+                        </div>
+                        <div class="post-action" onclick="toggleComments('comments-1')">
+                            <span class="icon">C</span> 32 Comments
+                        </div>
+                        <div class="post-action">
+                            <span class="icon">S</span> Share
+                        </div>
+                    </div>
+
+                    <div id="comments-1" class="comments-container">
+                        <div class="post-comments">
+                            <div class="comment">
+                                <div class="comment-avatar">IS</div>
+                                <div class="comment-body">
+                                    <div class="comment-username">ItadoriStrong</div>
+                                    <div class="comment-text">Wow! I'm still trying to level up my cursed technique. How long did it take you?</div>
+                                </div>
+                            </div>
+                            <div class="comment">
+                                <div class="comment-avatar">JD</div>
+                                <div class="comment-body">
+                                    <div class="comment-username">JujutsuDomain</div>
+                                    <div class="comment-text">About 50 hours of gameplay! Worth it though!</div>
+                                </div>
+                            </div>
+                            <div class="comment">
+                                <div class="comment-avatar">NK</div>
+                                <div class="comment-body">
+                                    <div class="comment-username">NobaraKugisaki</div>
+                                    <div class="comment-text">That looks amazing! Can't wait to get there myself.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="comment-form">
+                                <textarea placeholder="Add a comment..."></textarea>
+                                <button class="comment-submit">→</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-avatar">MS</div>
+                        <div class="post-user-info">
+                            <div class="post-username">MegumiShadows</div>
+                            <div class="post-meta">5 hours ago · Shibuya</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        Looking for a team to take on the Shibuya Incident raid. Need at least one high-level sorcerer and someone who's good with support spells. Drop your IDs below if interested!
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-action" onclick="toggleLike(this)">
+                            <span class="icon">♥</span> 42 Likes
+                        </div>
+                        <div class="post-action" onclick="toggleComments('comments-2')">
+                            <span class="icon">C</span> 17 Comments
+                        </div>
+                        <div class="post-action">
+                            <span class="icon">S</span> Share
+                        </div>
+                    </div>
+
+                    <div id="comments-2" class="comments-container">
+                        <div class="post-comments">
+                            <div class="comment">
+                                <div class="comment-avatar">SK</div>
+                                <div class="comment-body">
+                                    <div class="comment-username">SukunaKing</div>
+                                    <div class="comment-text">Level 87 sorcerer here. ID: SukunaKing#7734</div>
+                                </div>
+                            </div>
+                            <div class="comment">
+                                <div class="comment-avatar">MT</div>
+                                <div class="comment-body">
+                                    <div class="comment-username">MakiTech</div>
+                                    <div class="comment-text">I can join as support. ID: MakiZenin#2245</div>
+                                </div>
+                            </div>
+                            
+                            <div class="comment-form">
+                                <textarea placeholder="Add a comment..."></textarea>
+                                <button class="comment-submit">→</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-avatar">GS</div>
+                        <div class="post-user-info">
+                            <div class="post-username">GameStaff</div>
+                            <div class="post-meta">1 day ago · Official</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        🚨 Patch 2.4 dropping tomorrow! 🚨<br><br>
+                        • New playable character: Yuta Okkotsu<br>
+                        • Kyoto School map expansion<br>
+                        • Balance adjustments to cursed techniques<br>
+                        • New special grade curses in Shibuya<br>
+                        • Bug fixes and performance improvements<br><br>
+                        Get ready, sorcerers!
+                    </div>
+                    <div class="post-image">
+                        [Yuta Okkotsu Character Preview]
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-action" onclick="toggleLike(this)">
+                            <span class="icon">♥</span> 1.2K Likes
+                        </div>
+                        <div class="post-action" onclick="toggleComments('comments-3')">
+                            <span class="icon">C</span> 302 Comments
+                        </div>
+                        <div class="post-action">
+                            <span class="icon">S</span> Share
+                        </div>
+                    </div>
+
+                    <div id="comments-3" class="comments-container">
+                        <div class="post-comments">
+                            <div class="comment">
+                                <div class="comment-avatar">TK</div>
+                                <div class="comment-body">
+                                    <div class="comment-username">TodoFrozen</div>
+                                    <div class="comment-text">FINALLY! Been waiting for Yuta since launch!</div>
+                                </div>
+                            </div>
+                            <div class="comment">
+                                <div class="comment-avatar">HC</div>
+                                <div class="comment-body">
+                                    <div class="comment-username">HakariCasino</div>
+                                    <div class="comment-text">What about his cursed speech? Hope it's not nerfed...</div>
+                                </div>
+                            </div>
+                            <div class="comment">
+                                <div class="comment-avatar">GS</div>
+                                <div class="comment-body">
+                                    <div class="comment-username">GameStaff</div>
+                                    <div class="comment-text">@HakariCasino His cursed speech has a 30-second cooldown to balance gameplay. Full patch notes will be posted tomorrow!</div>
+                                </div>
+                            </div>
+                            
+                            <div class="comment-form">
+                                <textarea placeholder="Add a comment..."></textarea>
+                                <button class="comment-submit">→</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Jujutsu Kaisen: Rise of Cursed Sorcery. All rights reserved.</p>
+        <p>All Jujutsu Kaisen content and materials are trademarks and copyrights of their respective owners.</p>
+    </footer>
+
+    <script>
+        function toggleLike(element) {
+            element.classList.toggle('liked');
+            
+            // Update like count text
+            let text = element.textContent.trim();
+            let count = parseInt(text.match(/\d+/)[0]);
+            
+            if (element.classList.contains('liked')) {
+                count++;
+            } else {
+                count--;
+            }
+            
+            element.innerHTML = `<span class="icon">♥</span> ${count} Likes`;
+        }
+        
+        function toggleComments(commentId) {
+            const commentsContainer = document.getElementById(commentId);
+            commentsContainer.classList.toggle('visible');
+        }
+        
+        // Initialize with some comments visible
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('comments-1').classList.add('visible');
+        });
+        
+        function underDevelopment() {
+            alert("This feature is currently under development.");
+        }
+    </script>
+</body>
+</html>

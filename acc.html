@@ -3,67 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Settings - Jujutsu Kaisen: Rise of Cursed Sorcery</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jujutsu Kaisen: Rise of Cursed Sorcery - Account Settings</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #121212, #1e1e1e);
-            color: #f4f4f4;
-        }
-
+        /* Header Styles */
         header {
-            background: #1f1f1f;
-            color: #e63946; /* New color */
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            background-color: #222;
+            padding: 20px 40px;
         }
-
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 40px;
         }
-
-        .logo img {
-            width: 200px;
+        * {
+            font-family: "Inter Tight", sans-serif;
         }
-
+        body {
+            background-color: #000;
+            background-blend-mode: lighten;
+        }
+        main {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .logo h1 {
+            font-size: 24px;
+            background-blend-mode: lighten;
+            color: #00aaff;
+        }
         nav ul {
             list-style: none;
             display: flex;
             margin: 0;
             padding: 0;
         }
-
         nav ul li {
             margin: 0 15px;
         }
-
         nav ul li a {
             color: #f0f0f0;
             text-decoration: none;
             transition: color 0.3s;
         }
-
         nav ul li a:hover {
-            color: #e63946; /* Hover color */
+            color: #00aaff;
         }
-
         .cta-buttons {
             display: flex;
         }
-
         .play-now-btn1, .download-btn {
-            background-color: #e63946; /* Button color */
+            background-color: #00aaff;
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -73,148 +63,381 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
         .play-now-btn1:hover, .download-btn:hover {
-            background-color: #d62839; /* Darker shade on hover */
+            background-color: #008ecc;
         }
-
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #282828; /* Darker section background */
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-        }
-
-        h2 {
-            color: #e63946; /* New color */
-            border-bottom: 2px solid #f4f4f4;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-            font-size: 24px;
-            text-transform: uppercase;
-        }
-
-        .settings-section {
-            margin-bottom: 30px;
-            padding: 15px;
-            border-radius: 8px;
-            background-color: #1f1f1f; /* Section background */
-            transition: background-color 0.3s;
-        }
-
-        .settings-section:hover {
-            background-color: #2a2a2a; /* Darker shade on hover */
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="password"],
-        select {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #555;
-            border-radius: 5px;
-            background-color: #383838; /* Input background */
-            color: #f4f4f4;
-            transition: border-color 0.3s;
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="password"]:focus,
-        select:focus {
-            border-color: #e63946; /* Gold border on focus */
-            outline: none;
-        }
-
-        button {
-            padding: 10px 15px;
-            background-color: #5c4d9b;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background-color: #4a3a7f; /* Slightly darker */
-            transform: scale(1.05); /* Slightly enlarge on hover */
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px 0;
-            background: #1f1f1f;
+        body {
+            background-color: #000;
             color: #fff;
-        }
-
-        a {
-            color: #e63946; /* New color */
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        a:hover {
-            color: #fff; /* Change color on hover */
-        }
-
-        ul {
-            list-style-type: none;
+            font-family: "Inter Tight", sans-serif;
+            margin: 0;
             padding: 0;
         }
+        main {
+            margin: 20px;
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+        
+        footer {
+            background-color: #222;
+            padding: 20px;
+            text-align: center;
+            color: #f0f0f0;
+            border-top: 2px solid #444;
+        }
+        footer p {
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
 
-        li {
+        /* Account Settings Specific Styles */
+        .account-container {
+            display: flex;
+            margin-top: 40px;
+            background-color: #111;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.2);
+        }
+        
+        .account-sidebar {
+            width: 250px;
+            background-color: #1a1a1a;
+            padding: 20px 0;
+        }
+        
+        .account-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .account-sidebar li {
+            padding: 15px 20px;
+            border-left: 4px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .account-sidebar li:hover {
+            background-color: #222;
+            border-left-color: #00aaff;
+        }
+        
+        .account-sidebar li.active {
+            background-color: #222;
+            border-left-color: #00aaff;
+            color: #00aaff;
+        }
+        
+        .account-content {
+            flex: 1;
+            padding: 30px;
+        }
+        
+        .settings-panel {
+            display: none;
+        }
+        
+        .settings-panel.active {
+            display: block;
+        }
+        
+        .settings-panel h2 {
+            color: #00aaff;
+            margin-top: 0;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ccc;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: #222;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #00aaff;
+            box-shadow: 0 0 0 2px rgba(0, 170, 255, 0.2);
+        }
+        
+        .btn {
+            background-color: #00aaff;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #008ecc;
+        }
+        
+        .btn-danger {
+            background-color: #e63946;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c1121f;
+        }
+        
+        .profile-picture-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 4px solid #333;
+            position: relative;
+        }
+        
+        .profile-picture {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-picture-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .input-file {
+            display: none;
+        }
+        
+        .success-message, .error-message {
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .success-message {
+            background-color: rgba(40, 167, 69, 0.2);
+            border: 1px solid #28a745;
+            color: #28a745;
+        }
+        
+        .error-message {
+            background-color: rgba(220, 53, 69, 0.2);
+            border: 1px solid #dc3545;
+            color: #dc3545;
+        }
+        
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-card {
+            background-color: #1a1a1a;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-card h3 {
+            font-size: 14px;
+            color: #999;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card p {
+            font-size: 24px;
+            margin: 0;
+            color: #00aaff;
+        }
+        
+        .game-achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .achievement {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .achievement-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #333;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #00aaff;
+        }
+        
+        .achievement h4 {
+            font-size: 12px;
             margin: 5px 0;
         }
-
-        .unblock-button {
-            background: #d9534f;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            padding: 5px 10px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .unblock-button:hover {
-            background: #c9302c;
-            transform: scale(1.05);
-        }
-
-        #profile-pic {
-            border-radius: 50%;
-            border: 2px solid #e63946; /* New color */
-            margin-bottom: 15px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            main {
-                padding: 10px;
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .account-container {
+                flex-direction: column;
             }
-
-            h2 {
-                font-size: 20px;
-            }
-
-            button {
+            
+            .account-sidebar {
                 width: 100%;
-                margin-bottom: 10px;
+                padding: 10px 0;
             }
+            
+            .account-sidebar ul {
+                display: flex;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .account-sidebar li {
+                display: inline-block;
+                padding: 10px 15px;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+            
+            .account-sidebar li.active, .account-sidebar li:hover {
+                border-left-color: transparent;
+                border-bottom-color: #00aaff;
+            }
+        }
+
+        .notification-item {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 18px;
+            color: #00aaff;
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .notification-time {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #333;
+            transition: 0.4s;
+            border-radius: 24px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #00aaff;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        .preference-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .preference-item:last-child {
+            border-bottom: none;
+        }
+
+        .preference-title {
+            font-weight: bold;
+        }
+
+        .preference-description {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -222,17 +445,17 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <img src="jjk.png" alt="Logo">
+                <img src="jjk.png" width="200px">
             </div>
             <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
+                <ul class="nav-links">
+                    <li><a href="homepage.html">Home</a></li>
                     <li><a href="abt.html">About the Game</a></li>
-                    <li><a href="#" onclick="underDevelopment()">Play</a></li>
-                    <li><a href="#" onclick="underDevelopment()">Leaderboards</a></li>
+                    <li><a href="game.html">Play</a></li>
+                    <li><a href="leaderboard.html">Leaderboards</a></li>
                     <li><a href="community.html">Community</a></li>
-                    <li><a href="#" onclick="underDevelopment()">Support</a></li>
-                    <li><a href="#acc.html">Account Settings</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="acc.html">Account Settings</a></li>
                 </ul>
             </nav>
             <div class="cta-buttons">
@@ -243,38 +466,681 @@
     </header>
 
     <main>
-        <section class="settings-section">
-            <h2>Profile Information</h2>
-            <img id="profile-pic" src="default-profile.png" alt="Profile Picture" style="width: 100px; height: 100px;">
-            <form id="update-info-form">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
 
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" required>
+        <div class="account-container">
+            <div class="account-sidebar">
+                <ul>
+                    <li class="tab-link active" data-tab="profile">Profile</li>
+                    <li class="tab-link" data-tab="account">Account Details</li>
+                    <li class="tab-link" data-tab="notifications">Notifications</li>
+                    <li class="tab-link" data-tab="preferences">Game Preferences</li>
+                    <li class="tab-link" data-tab="achievements">Achievements</li>
+                    <li class="tab-link" data-tab="password">Change Password</li>
+                </ul>
+            </div>
 
-                <a href="#" id="change-password-link">Change Password</a>
-            </form>
-        </section>
+            <div class="account-content">
+                <!-- Profile Panel -->
+                <div id="profile" class="settings-panel active">
+                    <h2>Profile Information</h2>
+                    <div class="success-message" id="profile-success">Profile successfully updated!</div>
+                    <div class="error-message" id="profile-error">Error updating profile. Please try again.</div>
+                    
+                    <div class="profile-picture-container">
+                        <img id="profile-image" src="/api/placeholder/150/150" alt="Profile picture" class="profile-picture">
+                    </div>
+                    
+                    <div class="profile-picture-buttons">
+                        <input type="file" id="profile-pic-upload" class="input-file" accept="image/*">
+                        <button class="btn" id="change-picture-btn">Change Picture</button>
+                        <button class="btn btn-danger" id="remove-picture-btn">Remove</button>
+                    </div>
+                    
+                    <form id="profile-form">
+                        <div class="form-group">
+                            <label for="display-name">Display Name</label>
+                            <input type="text" id="display-name" value="GojoCursed_123">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="user-bio">Bio</label>
+                            <textarea id="user-bio" rows="4">Just a Jujutsu sorcerer trying to defeat some curses. Main: Gojo Satoru.</textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="favorite-character">Favorite Character</label>
+                            <select id="favorite-character">
+                                <option value="gojo">Gojo Satoru</option>
+                                <option value="yuji">Yuji Itadori</option>
+                                <option value="megumi">Megumi Fushiguro</option>
+                                <option value="nobara">Nobara Kugisaki</option>
+                                <option value="sukuna">Ryomen Sukuna</option>
+                                <option value="todo">Aoi Todo</option>
+                                <option value="maki">Maki Zen'in</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="player-level">Player Level</label>
+                            <input type="text" id="player-level" value="42" readonly>
+                        </div>
+                        
+                        <button type="submit" class="btn">Save Changes</button>
+                    </form>
 
-        <section class="settings-section">
-            <h2>Account Details</h2>
-            <p>Account Creation Date: <span id="account-creation-date">2024-01-01</span></p>
-            <p>Last Login Date: <span id="last-login-date">2024-10-20</span></p>
-            <p>Account Status: <span id="account-status">Active</span></p>
-        </section>
+                    <div class="profile-stats">
+                        <div class="stat-card">
+                            <h3>MATCHES</h3>
+                            <p>247</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>WINS</h3>
+                            <p>165</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>WIN RATE</h3>
+                            <p>66.8%</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>CURSES DEFEATED</h3>
+                            <p>1,243</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Account Details Panel -->
+                <div id="account" class="settings-panel">
+                    <h2>Account Details</h2>
+                    <div class="success-message" id="account-success">Account details successfully updated!</div>
+                    <div class="error-message" id="account-error">Error updating account details. Please try again.</div>
+                    
+                    <form id="account-form">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" value="GojoCursed_123" readonly>
+                            <small style="color: #999;">Username cannot be changed</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" value="gojo.fan@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="language">Language</label>
+                            <select id="language">
+                                <option value="en">English</option>
+                                <option value="jp">Japanese</option>
+                                <option value="es">Spanish</option>
+                                <option value="fr">French</option>
+                                <option value="de">German</option>
+                                <option value="kr">Korean</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="timezone">Timezone</label>
+                            <select id="timezone">
+                                <option value="utc-8">Pacific Time (UTC-8)</option>
+                                <option value="utc-7">Mountain Time (UTC-7)</option>
+                                <option value="utc-6">Central Time (UTC-6)</option>
+                                <option value="utc-5">Eastern Time (UTC-5)</option>
+                                <option value="utc+0">Greenwich Mean Time (UTC+0)</option>
+                                <option value="utc+1">Central European Time (UTC+1)</option>
+                                <option value="utc+9">Japan Standard Time (UTC+9)</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn">Save Changes</button>
+                    </form>
+                    
+                    <div style="margin-top: 40px; border-top: 1px solid #333; padding-top: 20px;">
+                        <h3 style="color: #e63946;">Danger Zone</h3>
+                        <p>Once you delete your account, there is no going back. Please be certain.</p>
+                        <button class="btn btn-danger" id="delete-account-btn">Delete Account</button>
+                    </div>
+                </div>
+                
+                <!-- Notifications Panel -->
+                <div id="notifications" class="settings-panel">
+                    <h2>Notifications</h2>
+                    <div class="success-message" id="notifications-success">Notification preferences updated!</div>
+                    
+                    <h3 style="color: #ccc;">Notification Settings</h3>
+                    <div class="preference-item">
+                        <div>
+                            <div class="preference-title">Email Notifications</div>
+                            <div class="preference-description">Receive game updates and news via email</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="preference-item">
+                        <div>
+                            <div class="preference-title">Push Notifications</div>
+                            <div class="preference-description">Receive notifications on your desktop</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="preference-item">
+                        <div>
+                            <div class="preference-title">Friend Requests</div>
+                            <div class="preference-description">Get notified when someone adds you as a friend</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="preference-item">
+                        <div>
+                            <div class="preference-title">Tournament Reminders</div>
+                            <div class="preference-description">Get reminders about upcoming tournaments</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="preference-item">
+                        <div>
+                            <div class="preference-title">Game Updates</div>
+                            <div class="preference-description">Get notified about new game updates and patches</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <button class="btn" style="margin-top: 20px;">Save Preferences</button>
+                    
+                    <h3 style="color: #ccc; margin-top: 40px;">Recent Notifications</h3>
+                    
+                    <div class="notification-item">
+                        <div class="notification-icon">🏆</div>
+                        <div class="notification-content">
+                            <div class="notification-title">You've reached Level 42!</div>
+                            <div class="notification-time">2 days ago</div>
+                        </div>
+                    </div>
+                    
+                    <div class="notification-item">
+                        <div class="notification-icon">🔔</div>
+                        <div class="notification-content">
+                            <div class="notification-title">New Tournament: Tokyo Showdown starts in 3 days</div>
+                            <div class="notification-time">5 days ago</div>
+                        </div>
+                    </div>
+                    
+                    <div class="notification-item">
+                        <div class="notification-icon">👥</div>
+                        <div class="notification-content">
+                            <div class="notification-title">YujiTodo99 accepted your friend request</div>
+                            <div class="notification-time">1 week ago</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Game Preferences Panel -->
+                <div id="preferences" class="settings-panel">
+                    <h2>Game Preferences</h2>
+                    <div class="success-message" id="preferences-success">Game preferences updated!</div>
+                    
+                    <form id="preferences-form">
+                        <div class="form-group">
+                            <label for="difficulty">Difficulty Level</label>
+                            <select id="difficulty">
+                                <option value="easy">Easy</option>
+                                <option value="normal" selected>Normal</option>
+                                <option value="hard">Hard</option>
+                                <option value="special-grade">Special Grade</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="graphics">Graphics Quality</label>
+                            <select id="graphics">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high" selected>High</option>
+                                <option value="ultra">Ultra</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="music-volume">Music Volume</label>
+                            <input type="range" id="music-volume" min="0" max="100" value="80">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sfx-volume">SFX Volume</label>
+                            <input type="range" id="sfx-volume" min="0" max="100" value="90">
+                        </div>
+                        
+                        <div class="preference-item">
+                            <div>
+                                <div class="preference-title">Show Tutorial Tips</div>
+                                <div class="preference-description">Display helpful tips during gameplay</div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="preference-item">
+                            <div>
+                                <div class="preference-title">Auto Save</div>
+                                <div class="preference-description">Automatically save game progress</div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="preference-item">
+                            <div>
+                                <div class="preference-title">Show Damage Numbers</div>
+                                <div class="preference-description">Display damage values during combat</div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn">Save Preferences</button>
+                    </form>
+                </div>
+                
+                <!-- Achievements Panel -->
+                <div id="achievements" class="settings-panel">
+                    <h2>Achievements</h2>
+                    
+                    <div class="profile-stats">
+                        <div class="stat-card">
+                            <h3>UNLOCKED</h3>
+                            <p>24/50</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>COMPLETION</h3>
+                            <p>48%</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>RAREST</h3>
+                            <p>Domain Master</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="color: #ccc; margin-top: 30px;">Recent Achievements</h3>
+                    
+                    <div class="game-achievements">
+                        <div class="achievement">
+                            <div class="achievement-icon">🌟</div>
+                            <h4>First Blood</h4>
+                        </div>
+                        <div class="achievement">
+                            <div class="achievement-icon">⚔️</div>
+                            <h4>Curse Slayer</h4>
+                        </div>
+                        <div class="achievement">
+                            <div class="achievement-icon">👁️</div>
+                            <h4>Infinity</h4>
+                        </div>
+                        <div class="achievement">
+                            <div class="achievement-icon">🏆</div>
+                            <h4>Champion</h4>
+                        </div>
+                        <div class="achievement">
+                            <div class="achievement-icon">🔮</div>
+                            <h4>Domain Master</h4>
+                        </div>
+                        <div class="achievement">
+                            <div class="achievement-icon">👊</div>
+                            <h4>Divergent Fist</h4>
+                        </div>
+                        <div class="achievement">
+                            <div class="achievement-icon">🐺</div>
+                            <h4>Ten Shadows</h4>
+                        </div>
+                        <div class="achievement">
+                            <div class="achievement-icon">⚰️</div>
+                            <h4>Restless Dead</h4>
+                        </div>
+                    </div>
+                    
+                    <button class="btn" style="margin-top: 30px;">View All Achievements</button>
+                </div>
+                
+                <!-- Password Panel -->
+                <div id="password" class="settings-panel">
+                    <h2>Change Password</h2>
+                    <div class="success-message" id="password-success">Password successfully updated!</div>
+                    <div class="error-message" id="password-error">Error updating password. Please try again.</div>
+                    
+                    <form id="password-form">
+                        <div class="form-group">
+                            <label for="current-password">Current Password</label>
+                            <input type="password" id="current-password">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <input type="password" id="new-password">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm New Password</label>
+                            <input type="password" id="confirm-password">
+                        </div>
+                        
+                        <button type="submit" class="btn">Update Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
 
-        <section class="settings-section">
-            <h2>Gameplay Statistics</h2>
-            <p>Total Playtime: <span id="total-playtime">20 hours</span></p>
-            <p>Achievements Unlocked: <span id="achievements-unlocked">5</span></p>
-            <p>Leaderboard Rank: <span id="leaderboard-rank">Top 100</span></p>
-            <p>Characters Played: <span id="characters-played">4</span></p>
-        </section>
+    <footer>
+        <p>&copy; 2023 Jujutsu Kaisen: Rise of Cursed Sorcery. All rights reserved.</p>
+        <p>A fan-made game based on Jujutsu Kaisen. All character rights belong to their respective owners.</p>
+    </footer>
 
-        <section class="settings-section">
-            <h2>Customization Options</h2>
-            <label for="profile-theme">Profile Theme:</label>
-            <select id="profile-theme">
-                <option value="light">Light Mode</option>
-               
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const settingsPanels = document.querySelectorAll('.settings-panel');
+            
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabLinks.forEach(tab => tab.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all panels
+                    settingsPanels.forEach(panel => panel.classList.remove('active'));
+                    
+                    // Show the corresponding panel
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Profile form submission
+            const profileForm = document.getElementById('profile-form');
+            profileForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simulate saving data
+                const displayName = document.getElementById('display-name').value;
+                const userBio = document.getElementById('user-bio').value;
+                const favoriteCharacter = document.getElementById('favorite-character').value;
+                
+                // Store in localStorage for persistence
+                localStorage.setItem('jjk_display_name', displayName);
+                localStorage.setItem('jjk_user_bio', userBio);
+                localStorage.setItem('jjk_favorite_character', favoriteCharacter);
+                
+                // Show success message
+                const successMsg = document.getElementById('profile-success');
+                successMsg.style.display = 'block';
+                
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 3000);
+            });
+            
+            // Account form submission
+            const accountForm = document.getElementById('account-form');
+            accountForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simulate saving data
+                const email = document.getElementById('email').value;
+                const language = document.getElementById('language').value;
+                const timezone = document.getElementById('timezone').value;
+                
+                // Store in localStorage for persistence
+                localStorage.setItem('jjk_email', email);
+                localStorage.setItem('jjk_language', language);
+                localStorage.setItem('jjk_timezone', timezone);
+                
+                // Show success message
+                const successMsg = document.getElementById('account-success');
+                successMsg.style.display = 'block';
+                
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 3000);
+            });
+            
+            // Password form submission
+            const passwordForm = document.getElementById('password-form');
+            passwordForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const currentPassword = document.getElementById('current-password').value;
+                const newPassword = document.getElementById('new-password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+                
+                // Simple validation
+                if (!currentPassword || !newPassword || !confirmPassword) {
+                    const errorMsg = document.getElementById('password-error');
+                    errorMsg.textContent = 'All fields are required';
+                    errorMsg.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        errorMsg.style.display = 'none';
+                    }, 3000);
+                    
+                    return;
+                }
+                
+                if (newPassword !== confirmPassword) {
+                    const errorMsg = document.getElementById('password-error');
+                    errorMsg.textContent = 'New passwords do not match';
+                    errorMsg.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        errorMsg.style.display = 'none';
+                    }, 3000);
+                    
+                    return;
+                }
+                
+                // Simulate password check (in a real app, this would be server-side)
+                if (currentPassword !== 'password123') {
+                    const errorMsg = document.getElementById('password-error');
+                    errorMsg.textContent = 'Current password is incorrect';
+                    errorMsg.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        errorMsg.style.display = 'none';
+                    }, 3000);
+                    
+                    return;
+                }
+                
+                // Password successfully updated
+                localStorage.setItem('jjk_password', newPassword);
+                
+                // Clear form
+                passwordForm.reset();
+                
+                // Show success message
+                const successMsg = document.getElementById('password-success');
+                successMsg.style.display = 'block';
+                
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 3000);
+            });
+            
+            // Game preferences form submission
+            const preferencesForm = document.getElementById('preferences-form');
+            preferencesForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simulate saving data
+                const difficulty = document.getElementById('difficulty').value;
+                const graphics = document.getElementById('graphics').value;
+                const musicVolume = document.getElementById('music-volume').value;
+                const sfxVolume = document.getElementById('sfx-volume').value;
+                
+                // Store in localStorage for persistence
+                localStorage.setItem('jjk_difficulty', difficulty);
+                localStorage.setItem('jjk_graphics', graphics);
+                localStorage.setItem('jjk_music_volume', musicVolume);
+                localStorage.setItem('jjk_sfx_volume', sfxVolume);
+                
+                // Get toggle switches
+                const toggles = preferencesForm.querySelectorAll('input[type="checkbox"]');
+                toggles.forEach(toggle => {
+                    localStorage.setItem(`jjk_${toggle.parentElement.previousElementSibling.querySelector('.preference-title').textContent.toLowerCase().replace(/\s+/g, '_')}`, toggle.checked);
+                });
+                
+                // Show success message
+                const successMsg = document.getElementById('preferences-success');
+                successMsg.style.display = 'block';
+                
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 3000);
+            });
+            
+            // Profile picture functionality
+            const profileImage = document.getElementById('profile-image');
+            const fileInput = document.getElementById('profile-pic-upload');
+            const changeBtn = document.getElementById('change-picture-btn');
+            const removeBtn = document.getElementById('remove-picture-btn');
+            
+            // Load saved profile picture if exists
+            if (localStorage.getItem('jjk_profile_pic')) {
+                profileImage.src = localStorage.getItem('jjk_profile_pic');
+            }
+            
+            changeBtn.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            fileInput.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        profileImage.src = e.target.result;
+                        localStorage.setItem('jjk_profile_pic', e.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            removeBtn.addEventListener('click', function() {
+                profileImage.src = '/api/placeholder/150/150';
+                localStorage.removeItem('jjk_profile_pic');
+            });
+            
+            // Delete account functionality
+            const deleteAccountBtn = document.getElementById('delete-account-btn');
+            deleteAccountBtn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                    // Clear all localStorage data
+                    Object.keys(localStorage).forEach(key => {
+                        if (key.startsWith('jjk_')) {
+                            localStorage.removeItem(key);
+                        }
+                    });
+                    
+                    // Redirect to homepage
+                    alert('Your account has been deleted. You will be redirected to the homepage.');
+                    window.location.href = 'homepage.html';
+                }
+            });
+            
+            // Load saved data on page load
+            function loadSavedData() {
+                // Profile data
+                if (localStorage.getItem('jjk_display_name')) {
+                    document.getElementById('display-name').value = localStorage.getItem('jjk_display_name');
+                }
+                
+                if (localStorage.getItem('jjk_user_bio')) {
+                    document.getElementById('user-bio').value = localStorage.getItem('jjk_user_bio');
+                }
+                
+                if (localStorage.getItem('jjk_favorite_character')) {
+                    document.getElementById('favorite-character').value = localStorage.getItem('jjk_favorite_character');
+                }
+                
+                // Account data
+                if (localStorage.getItem('jjk_email')) {
+                    document.getElementById('email').value = localStorage.getItem('jjk_email');
+                }
+                
+                if (localStorage.getItem('jjk_language')) {
+                    document.getElementById('language').value = localStorage.getItem('jjk_language');
+                }
+                
+                if (localStorage.getItem('jjk_timezone')) {
+                    document.getElementById('timezone').value = localStorage.getItem('jjk_timezone');
+                }
+                
+                // Game preferences
+                if (localStorage.getItem('jjk_difficulty')) {
+                    document.getElementById('difficulty').value = localStorage.getItem('jjk_difficulty');
+                }
+                
+                if (localStorage.getItem('jjk_graphics')) {
+                    document.getElementById('graphics').value = localStorage.getItem('jjk_graphics');
+                }
+                
+                if (localStorage.getItem('jjk_music_volume')) {
+                    document.getElementById('music-volume').value = localStorage.getItem('jjk_music_volume');
+                }
+                
+                if (localStorage.getItem('jjk_sfx_volume')) {
+                    document.getElementById('sfx-volume').value = localStorage.getItem('jjk_sfx_volume');
+                }
+                
+                // Load toggle states
+                const toggles = document.querySelectorAll('.toggle-switch input[type="checkbox"]');
+                toggles.forEach(toggle => {
+                    const prefName = toggle.parentElement.previousElementSibling.querySelector('.preference-title').textContent.toLowerCase().replace(/\s+/g, '_');
+                    const savedValue = localStorage.getItem(`jjk_${prefName}`);
+                    
+                    if (savedValue !== null) {
+                        toggle.checked = savedValue === 'true';
+                    }
+                });
+            }
+            
+            // Call function to load saved data
+            loadSavedData();
+        });
+        
+        // Support link functionality
+        function underDevelopment() {
+            alert('This feature is currently under development. Please check back later!');
+            return false;
+        }
+    </script>
+</body>
+</html>

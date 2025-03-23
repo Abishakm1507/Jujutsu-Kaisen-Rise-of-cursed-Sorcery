@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jujutsu Kaisen: Rise of Cursed Sorcery - Support</title>
+    <style>
+        /* Header Styles */
+        header {
+            background-color: #222;
+            padding: 20px 40px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        * {
+            font-family: "Inter Tight", sans-serif;
+        }
+        body {
+            background-color: #000;
+            background-blend-mode: lighten;
+        }
+        main {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .logo h1 {
+            font-size: 24px;
+            background-blend-mode: lighten;
+            color: #00aaff;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #f0f0f0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #00aaff;
+        }
+        .cta-buttons {
+            display: flex;
+        }
+        .play-now-btn1, .download-btn {
+            background-color: #00aaff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .play-now-btn1:hover, .download-btn:hover {
+            background-color: #008ecc;
+        }
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: "Inter Tight", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        main {
+            margin: 20px;
+        }
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        .section h2 {
+            color: #e63946;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        .section p {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .section ul {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .section ul li {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #222;
+            padding: 20px;
+            text-align: center;
+            color: #f0f0f0;
+            border-top: 2px solid #444;
+        }
+        footer p {
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Support Page Specific Styles */
+        .support-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .support-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .support-header h1 {
+            color: #00aaff;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .support-header p {
+            color: #ccc;
+            font-size: 1.2rem;
+        }
+        .support-sections {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .support-box {
+            flex: 1 1 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .support-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.2);
+        }
+        .support-box h3 {
+            color: #00aaff;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .support-box p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        .support-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #e63946;
+        }
+        
+        .faq-section {
+            margin-top: 60px;
+        }
+        .faq-title {
+            text-align: center;
+            color: #00aaff;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .faq-question {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .faq-answer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            display: none;
+            line-height: 1.6;
+            color: #ccc;
+        }
+        .active .faq-answer {
+            display: block;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 60px auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00aaff;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: #00aaff;
+        }
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background-color: #e63946;
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background-color: #c1121f;
+        }
+        .form-title {
+            text-align: center;
+            color: #00aaff;
+            margin-bottom: 25px;
+        }
+        .success-message {
+            display: none;
+            background: rgba(0, 170, 255, 0.2);
+            color: #00aaff;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="jjk.png" width="200px">
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="abt.html">About the Game</a></li>
+                    <li><a href="game.html">Play</a></li>
+                    <li><a href="leaderboard.html">Leaderboards</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="acc.html">Account Settings</a></li>
+                </ul>
+            </nav>
+            <div class="cta-buttons">
+                <button class="play-now-btn1">Play Now</button>
+                <button class="download-btn">Download</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="support-container">
+            <div class="support-header">
+                <h1>Support Center</h1>
+                <p>Get help with Jujutsu Kaisen: Rise of Cursed Sorcery. We're here to assist you on your journey.</p>
+            </div>
+
+            <div class="support-sections">
+                <div class="support-box" onclick="window.location.href='#faq-section'">
+                    <div class="support-icon">❓</div>
+                    <h3>Frequently Asked Questions</h3>
+                    <p>Find answers to common questions about gameplay, accounts, and technical issues.</p>
+                </div>
+                <div class="support-box" onclick="window.location.href='#contact-form'">
+                    <div class="support-icon">📨</div>
+                    <h3>Contact Support</h3>
+                    <p>Can't find what you're looking for? Submit a support ticket and we'll get back to you.</p>
+                </div>
+                <div class="support-box" onclick="window.location.href='guides.html'">
+                    <div class="support-icon">📚</div>
+                    <h3>Game Guides</h3>
+                    <p>Check out our comprehensive guides to master your sorcery techniques.</p>
+                </div>
+            </div>
+
+            <div id="faq-section" class="faq-section">
+                <h2 class="faq-title">Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How do I create an account?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            To create an account, click on the "Play Now" button in the top right corner of our website. You'll be directed to a registration page where you can enter your email, create a username and password. Alternatively, you can sign up using your Google, Facebook, or Discord account for a faster registration process.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How do I unlock new cursed techniques?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            New cursed techniques can be unlocked by progressing through the story mode or by achieving specific milestones in the game. Some rare techniques require completing special events or challenges. You can view your available and locked techniques in the "Techniques" section of your character profile.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            I'm experiencing lag during gameplay. What can I do?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            If you're experiencing lag, try the following solutions:<br>
+                            - Check your internet connection and ensure you have a stable connection<br>
+                            - Lower your graphics settings in the game options menu<br>
+                            - Close other applications or browser tabs that might be using bandwidth<br>
+                            - Try playing during off-peak hours<br>
+                            - Update your graphics drivers<br>
+                            If problems persist, please contact our support team with details about your device specifications.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How do I reset my password?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            To reset your password, click on the "Account Settings" link in the navigation menu. On your account page, select "Security" and then "Reset Password." You'll receive an email with instructions to create a new password. Make sure to check your spam folder if you don't see the email within a few minutes.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Is there a way to transfer my progress between devices?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! Your progress is automatically saved to your account. Simply log in with the same account credentials on any device to continue where you left off. Make sure your game is fully synced before switching devices by visiting the main menu or completing a level.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How can I report a bug or player?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            To report a bug or another player, use the "Report" feature in the game menu. For bugs, please provide as much detail as possible, including what you were doing when the bug occurred and any error messages you received. For player reports, include the player's username and a description of the incident. You can also submit reports through our contact form below.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contact-form" class="contact-form">
+                <h2 class="form-title">Contact Support</h2>
+                <form id="supportForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" class="form-control" required style="background-color: #000;">
+                            <option value="">Select a topic</option>
+                            <option value="account">Account Issues</option>
+                            <option value="payment">Payment Problems</option>
+                            <option value="bug">Bug Report</option>
+                            <option value="gameplay">Gameplay Questions</option>
+                            <option value="technical">Technical Issues</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Describe your issue</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Ticket</button>
+                    <div class="success-message" id="successMessage">
+                        Your support ticket has been submitted successfully! We'll get back to you within 24 hours.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Jujutsu Kaisen: Rise of Cursed Sorcery. All rights reserved.</p>
+        <p>All characters and related elements are trademarks of their respective owners.</p>
+    </footer>
+
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                document.querySelectorAll('.faq-item').forEach(faqItem => {
+                    if (faqItem !== item) {
+                        faqItem.classList.remove('active');
+                    }
+                });
+                item.classList.toggle('active');
+                
+                // Change the toggle icon
+                const toggleIcon = question.querySelector('.toggle-icon');
+                if (item.classList.contains('active')) {
+                    toggleIcon.textContent = '-';
+                } else {
+                    toggleIcon.textContent = '+';
+                }
+            });
+        });
+
+        // Support Form Submission
+        document.getElementById('supportForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Normally, this would send data to the server
+            // For this example, we'll just show the success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        });
+
+        // Function to handle "Under Development" click
+        function underDevelopment() {
+            alert("Support page is now available!");
+        }
+        
+        // Add active class to current page in navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links li a');
+            navLinks.forEach(link => {
+                if (link.textContent === 'Support') {
+                    link.style.color = '#00aaff';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

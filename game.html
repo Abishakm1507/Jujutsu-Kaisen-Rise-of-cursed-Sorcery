@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Megumi Dino Game</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter Tight", sans-serif;
+    }
+
+    body {
+      background-color: #121212;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: #222;
+      padding: 20px 40px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo h1 {
+      font-size: 24px;
+      color: #00aaff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: #f0f0f0;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #00aaff;
+    }
+
+    .cta-buttons {
+      display: flex;
+    }
+
+    .play-now-btn1,
+    .download-btn {
+      background-color: #00aaff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      margin-left: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .play-now-btn1:hover,
+    .download-btn:hover {
+      background-color: #008ecc;
+    }
+
+    /* Game Container */
+    .game-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      padding: 20px;
+    }
+
+    .game-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #00aaff;
+      text-align: center;
+    }
+
+    canvas {
+      border: 2px solid #444;
+      background-color: #282828;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 170, 255, 0.2);
+    }
+
+    .game-controls {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .game-btn {
+      background-color: #00aaff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .game-btn:hover {
+      background-color: #008ecc;
+      transform: translateY(-2px);
+    }
+
+    .game-btn:disabled {
+      background-color: #555;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .game-info {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-align: center;
+      max-width: 800px;
+    }
+
+    .game-info h3 {
+      color: #00aaff;
+      margin-bottom: 10px;
+    }
+
+    .game-info p {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    /* Game Over Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #222;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 0 30px rgba(0, 170, 255, 0.3);
+      animation: modalFadeIn 0.3s;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal h2 {
+      color: #00aaff;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    .modal p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .score-display {
+      font-size: 3rem;
+      color: #e63946;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    function underDevelopment() {
+      alert("This webpage is under development.");
+    }
+  </script>
+
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <img src="jjk.png" width="200px">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="homepage.html">Home</a></li>
+          <li><a href="abt.html">About the Game</a></li>
+          <li><a href="game.html">Play</a></li>
+          <li><a href="leaderboard.html">Leaderboards</a></li>
+          <li><a href="community.html">Community</a></li>
+          <li><a href="support.html">Support</a></li>
+          <li><a href="acc.html">Account Settings</a></li>
+        </ul>
+      </nav>
+      <div class="cta-buttons">
+        <button class="play-now-btn1">Play Now</button>
+        <button class="download-btn">Download</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="game-container">
+    <h1 class="game-title">Megumi's Cursed Run</h1>
+    <canvas id="gameCanvas"></canvas>
+    
+    <div class="game-controls">
+      <button id="startBtn" class="game-btn"><i class="fas fa-play"></i> Start</button>
+      <button id="pauseBtn" class="game-btn" disabled><i class="fas fa-pause"></i> Pause</button>
+      <button id="restartBtn" class="game-btn" disabled><i class="fas fa-redo"></i> Restart</button>
+    </div>
+    
+    <div class="game-info">
+      <h3>How to Play</h3>
+      <p>Press the <strong>Space Bar</strong> or tap the screen to make Megumi jump over obstacles.</p>
+      <p>Avoid both ground and flying cursed spirits to survive and earn points!</p>
+      <p>Difficulty increases over time - be prepared for faster spirits and flying enemies!</p>
+    </div>
+  </div>
+  
+  <!-- Game Over Modal -->
+  <div id="gameOverModal" class="modal">
+    <div class="modal-content">
+      <h2>Game Over!</h2>
+      <p>Your cursed energy has been depleted.</p>
+      <div class="score-display" id="finalScore">0</div>
+      <p>Can you beat your high score?</p>
+      <div class="modal-buttons">
+        <button id="playAgainBtn" class="game-btn"><i class="fas fa-play"></i> Play Again</button>
+        <button id="homeBtn" class="game-btn"><i class="fas fa-home"></i> Home</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    const startBtn = document.getElementById("startBtn");
+    const pauseBtn = document.getElementById("pauseBtn");
+    const restartBtn = document.getElementById("restartBtn");
+    const gameOverModal = document.getElementById("gameOverModal");
+    const finalScoreDisplay = document.getElementById("finalScore");
+    const playAgainBtn = document.getElementById("playAgainBtn");
+    const homeBtn = document.getElementById("homeBtn");
+
+    // Set canvas dimensions
+    canvas.width = 800;
+    canvas.height = 400;
+
+    // Load character image
+    const megumiImage = new Image();
+    megumiImage.src = "megumi.png";
+    
+    // Load obstacle images
+    const groundSpiritImage = new Image();
+    groundSpiritImage.src = "cursed_spirit.png";
+    
+    // Load flying obstacle image
+    const flyingSpiritImage = new Image();
+    flyingSpiritImage.src = "fly_cursed_spirit.png";
+
+    // Game state
+    let gameState = "idle"; // idle, running, paused, over
+    let isJumping = false;
+    let jumpSpeed = 0;
+    let gravity = 0.5;
+    let score = 0;
+    let highScore = localStorage.getItem("megumi-game-highscore") || 0;
+    let animationId;
+    let gameSpeed = 5;
+    let lastObstacleTime = 0;
+    let minObstacleInterval = 800; // Minimum time between obstacles
+    let maxObstacleInterval = 2500; // Maximum time between obstacles
+    let obstacleInterval = getRandomInterval(); // Random interval between min and max
+    let lastFrameTime = 0;
+    let pointsPerSecond = 1;
+    let flyingObstaclesEnabled = false; // Flying obstacles start disabled
+    let flyingObstaclesThreshold = 30; // Score threshold for flying obstacles
+    let lastSpeedIncrease = 0; // Track when we last increased speed
+
+    // Character properties
+    const character = {
+      x: 50,
+      y: canvas.height - 80,
+      width: 50,
+      height: 64,
+      ground: canvas.height - 80,
+    };
+
+    // Obstacle properties
+    const obstacles = [];
+    const obstacleWidth = 40;
+    const obstacleHeight = 40;
+
+    // Function to get random interval between obstacles
+    function getRandomInterval() {
+      return Math.floor(Math.random() * (maxObstacleInterval - minObstacleInterval + 1)) + minObstacleInterval;
+    }
+
+    // Initialize game
+    function init() {
+      obstacles.length = 0;
+      score = 0;
+      gameSpeed = 5;
+      character.y = character.ground;
+      isJumping = false;
+      jumpSpeed = 0;
+      gameState = "idle";
+      flyingObstaclesEnabled = false;
+      lastSpeedIncrease = 0;
+      
+      // Update button states
+      startBtn.disabled = false;
+      pauseBtn.disabled = true;
+      restartBtn.disabled = true;
+      
+      // Draw initial frame
+      drawGame();
+    }
+
+    // Start game
+    function startGame() {
+      if (gameState === "idle" || gameState === "over") {
+        gameState = "running";
+        lastFrameTime = performance.now();
+        lastObstacleTime = performance.now();
+        
+        // Update button states
+        startBtn.disabled = true;
+        pauseBtn.disabled = false;
+        restartBtn.disabled = false;
+        
+        // Start game loop
+        gameLoop(performance.now());
+      }
+    }
+
+    // Pause game
+    function pauseGame() {
+      if (gameState === "running") {
+        gameState = "paused";
+        cancelAnimationFrame(animationId);
+        
+        // Update button states
+        startBtn.disabled = false;
+        pauseBtn.disabled = true;
+      } else if (gameState === "paused") {
+        gameState = "running";
+        lastFrameTime = performance.now();
+        
+        // Update button states
+        startBtn.disabled = true;
+        pauseBtn.disabled = false;
+        
+        // Resume game loop
+        gameLoop(performance.now());
+      }
+    }
+
+    // Restart game
+    function restartGame() {
+      cancelAnimationFrame(animationId);
+      init();
+      startGame();
+    }
+
+    // End game
+    function endGame() {
+      gameState = "over";
+      cancelAnimationFrame(animationId);
+      
+      // Update high score
+      if (score > highScore) {
+        highScore = score;
+        localStorage.setItem("megumi-game-highscore", highScore);
+      }
+      
+      // Show game over modal
+      finalScoreDisplay.textContent = Math.floor(score);
+      gameOverModal.style.display = "flex";
+      
+      // Update button states
+      startBtn.disabled = false;
+      pauseBtn.disabled = true;
+      restartBtn.disabled = false;
+    }
+
+    // Add obstacles dynamically
+    function createObstacle(currentTime) {
+      if (currentTime - lastObstacleTime > obstacleInterval) {
+        // Decide if this is a flying obstacle
+        const isFlying = flyingObstaclesEnabled && Math.random() > 0.6; // 40% chance for flying when enabled
+        
+        obstacles.push({
+          x: canvas.width,
+          y: isFlying ? canvas.height - obstacleHeight - 120 : canvas.height - obstacleHeight - 20, // Flying obstacles are higher
+          width: obstacleWidth,
+          height: obstacleHeight,
+          type: isFlying ? "flying" : "ground"
+        });
+        
+        lastObstacleTime = currentTime;
+        
+        // Set a new random interval for the next obstacle
+        // As score increases, both min and max interval decrease
+        minObstacleInterval = Math.max(500, 800 - score * 5);
+        maxObstacleInterval = Math.max(1200, 2500 - score * 10);
+        obstacleInterval = getRandomInterval();
+      }
+    }
+
+    // Draw game elements
+    function drawGame() {
+      // Clear the canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw the ground
+      ctx.fillStyle = "#444";
+      ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
+
+      // Draw obstacles
+      for (let i = 0; i < obstacles.length; i++) {
+        const obs = obstacles[i];
+        
+        if (obs.type === "flying" && flyingSpiritImage.complete) {
+          // Draw flying obstacle
+          ctx.drawImage(flyingSpiritImage, obs.x, obs.y, obs.width, obs.height);
+        } else if (obs.type === "ground" && groundSpiritImage.complete) {
+          // Draw ground obstacle
+          ctx.drawImage(groundSpiritImage, obs.x, obs.y, obs.width, obs.height);
+        } else {
+          // Fallback if images are not loaded
+          ctx.fillStyle = obs.type === "flying" ? "purple" : "red";
+          ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+        }
+      }
+
+      // Draw character
+      if (megumiImage.complete) {
+        ctx.drawImage(megumiImage, character.x, character.y, character.width, character.height);
+      } else {
+        ctx.fillStyle = "blue";
+        ctx.fillRect(character.x, character.y, character.width, character.height);
+      }
+
+      // Display score
+      ctx.fillStyle = "#fff";
+      ctx.font = "20px 'Inter Tight', sans-serif";
+      ctx.fillText(`Score: ${Math.floor(score)}`, 10, 30);
+      
+      // Display high score
+      ctx.fillText(`High Score: ${Math.floor(highScore)}`, canvas.width - 150, 30);
+      
+      // Display game speed
+      ctx.fillText(`Speed: ${gameSpeed.toFixed(1)}x`, 10, 60);
+      
+      // Display game state if paused
+      if (gameState === "paused") {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.fillStyle = "#fff";
+        ctx.font = "30px 'Inter Tight', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("PAUSED", canvas.width / 2, canvas.height / 2);
+        ctx.textAlign = "left";
+      }
+    }
+
+    // Game Loop
+    function gameLoop(currentTime) {
+      if (gameState !== "running") return;
+      
+      animationId = requestAnimationFrame(gameLoop);
+      
+      // Calculate delta time for smoother animations
+      const deltaTime = currentTime - lastFrameTime;
+      lastFrameTime = currentTime;
+      
+      // Add to score based on time
+      score += pointsPerSecond * (deltaTime / 1000);
+      
+      // Increase game speed gradually over time
+      // Calculate a new speed based on score
+      const targetSpeed = Math.min(15, 5 + score / 30);
+      
+      // Smooth transition to new speed
+      if (gameSpeed < targetSpeed) {
+        gameSpeed += 0.01;
+      }
+      
+      // Check if we should enable flying obstacles
+      if (score >= flyingObstaclesThreshold && !flyingObstaclesEnabled) {
+        flyingObstaclesEnabled = true;
+      }
+      
+      // Create obstacles
+      createObstacle(currentTime);
+      
+      // Update character position (jumping)
+      if (isJumping) {
+        character.y += jumpSpeed;
+        jumpSpeed += gravity;
+        
+        // Check if landed
+        if (character.y >= character.ground) {
+          character.y = character.ground;
+          isJumping = false;
+          jumpSpeed = 0;
+        }
+      }
+      
+      // Move and filter obstacles
+      for (let i = obstacles.length - 1; i >= 0; i--) {
+        obstacles[i].x -= gameSpeed;
+        
+        // Remove obstacles that are off-screen
+        if (obstacles[i].x + obstacleWidth < 0) {
+          obstacles.splice(i, 1);
+        }
+      }
+      
+      // Check for collisions
+      if (checkCollisions()) {
+        endGame();
+        return;
+      }
+      
+      // Draw the game
+      drawGame();
+    }
+    
+    // Handle jumping
+    function jump() {
+      if (!isJumping && gameState === "running") {
+        isJumping = true;
+        jumpSpeed = -12; // Negative value makes character go up
+      }
+    }
+    
+    // Check collisions
+    function checkCollisions() {
+      for (let i = 0; i < obstacles.length; i++) {
+        const obs = obstacles[i];
+        
+        // Basic collision detection (AABB)
+        if (character.x < obs.x + obs.width &&
+            character.x + character.width > obs.x &&
+            character.y < obs.y + obs.height &&
+            character.y + character.height > obs.y) {
+          return true; // Collision detected
+        }
+      }
+      return false; // No collision
+    }
+    
+    // Event listeners
+    startBtn.addEventListener("click", startGame);
+    pauseBtn.addEventListener("click", pauseGame);
+    restartBtn.addEventListener("click", restartGame);
+    playAgainBtn.addEventListener("click", () => {
+      gameOverModal.style.display = "none";
+      restartGame();
+    });
+    homeBtn.addEventListener("click", () => {
+      gameOverModal.style.display = "none";
+      init();
+    });
+    
+    // Keyboard controls
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "Space") {
+        if (gameState === "idle") {
+          startGame();
+        } else {
+          jump();
+        }
+        e.preventDefault(); // Prevent scrolling when pressing space
+      } else if (e.code === "Escape") {
+        pauseGame();
+      }
+    });
+    
+    // Touch screen support
+    canvas.addEventListener("touchstart", (e) => {
+      if (gameState === "idle") {
+        startGame();
+      } else {
+        jump();
+      }
+      e.preventDefault(); // Prevent default touch behavior
+    });
+    
+    // Play now button functionality
+    document.querySelector(".play-now-btn1").addEventListener("click", () => {
+      if (gameState === "idle") {
+        startGame();
+      }
+    });
+    
+    // Download button functionality
+    document.querySelector(".download-btn").addEventListener("click", () => {
+      underDevelopment();
+    });
+    
+    // Handle window focus/blur
+    window.addEventListener("blur", () => {
+      if (gameState === "running") {
+        pauseGame();
+      }
+    });
+    
+    // Handle window resize
+    window.addEventListener("resize", () => {
+      // Adjust canvas if needed, maintaining aspect ratio
+      drawGame();
+    });
+    
+    // Initialize the game when page loads
+    window.addEventListener("load", () => {
+      init();
+    });
+    
+    // Preload images
+    megumiImage.onload = drawGame;
+    groundSpiritImage.onload = drawGame;
+    flyingSpiritImage.onload = drawGame;
+    
+    // Initial game setup
+    init();
+  </script>
+</body>
+</html>

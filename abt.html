@@ -1,106 +1,800 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Jujutsu Kaisen: Rise of Cursed Sorcery</title>
+    <title>Jujutsu Kaisen: Rise of Cursed Sorcery - About the Game</title>
     <style>
+        /* Header Styles */
+        header {
+            background-color: #222;
+            padding: 20px 40px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            font-family: "Inter Tight", sans-serif;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #0b0b0b;
-            color: #f0f0f0;
-            line-height: 1.6;
+            background-color: #000;
+            background-blend-mode: lighten;
+            margin: 0;
+            padding: 0;
+            color: #fff;
         }
 
-        header {
-            background-color: #222;
-            padding: 40px 20px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid #444;
+        main {
+            margin-left: 10px;
+            margin-right: 10px;
         }
 
-        header h1 {
-            color: #e63946;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+        .logo h1 {
+            font-size: 24px;
+            background-blend-mode: lighten;
+            color: #00aaff;
         }
 
         nav ul {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
             list-style: none;
-            padding: 10px 0;
-            background-color: #111;
-            border-radius: 5px;
+            display: flex;
+            margin: 0;
+            padding: 0;
         }
 
         nav ul li {
-            display: inline;
+            margin: 0 15px;
         }
 
         nav ul li a {
             color: #f0f0f0;
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: color 0.3s;
         }
 
         nav ul li a:hover {
-            background-color: #e63946;
-            color: #ffffff;
+            color: #00aaff;
         }
 
-        .about-section, .content-section {
-            padding: 60px 20px;
+        .cta-buttons {
+            display: flex;
+        }
+
+        .play-now-btn1,
+        .download-btn {
+            background-color: #00aaff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .play-now-btn1:hover,
+        .download-btn:hover {
+            background-color: #008ecc;
+        }
+
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
             text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #00aaff;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #e63946;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: rgba(17, 17, 17, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #333;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.2);
+        }
+
+        .feature-img {
+            height: 200px;
+            background-color: #222;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #444;
+        }
+
+        /* Add these styles to fix the image display */
+        .feature-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* Changed from 'cover' to 'contain' */
+            transition: transform 0.3s ease;
+            transform: scale(1.05);
+        }
+
+        .feature-card:hover .feature-img img {
+            transform: scale(1.1);
+            /* Subtle zoom on hover instead of default zoom */
+        }
+
+        .feature-content {
+            padding: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #00aaff;
+        }
+
+        .feature-desc {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Character Showcase */
+        .character-showcase {
+            background-color: rgba(10, 10, 10, 0.8);
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .character-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/1600/800');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .character-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .character-list {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px 0;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .character-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .character-card {
+            min-width: 280px;
+            margin-right: 30px;
+            background-color: rgba(17, 17, 17, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .character-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 170, 255, 0.4);
+        }
+
+        .character-img {
+            height: 320px;
+            background-color: #222;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #444;
+        }
+
+        /* Add these styles to fix the image display */
+        .character-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* Changed from 'cover' to 'contain' */
+            transition: transform 0.3s ease;
+        }
+
+        .character-img img {
+            transform: scale(1.05);
+            /* Subtle zoom on hover instead of default zoom */
+        }
+
+        .character-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .character-name {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: #00aaff;
+        }
+
+        .character-type {
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: #e63946;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .character-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00aaff;
+        }
+
+        .stat-name {
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+
+        .character-desc {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .character-ability {
+            background-color: rgba(230, 57, 70, 0.2);
+            border-left: 3px solid #e63946;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .ability-name {
+            font-weight: bold;
+            color: #e63946;
+            margin-bottom: 3px;
+        }
+
+        /* Gameplay Modes */
+        .gameplay-modes {
+            background-color: #0a0a0a;
+            padding: 80px 0;
+        }
+
+        .mode-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .mode-tab {
+            padding: 10px 25px;
+            margin: 0 10px 10px;
+            background-color: rgba(17, 17, 17, 0.8);
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: #ccc;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mode-tab.active {
+            background-color: #00aaff;
+            color: #fff;
+            border-color: #00aaff;
+        }
+
+        .mode-tab:hover:not(.active) {
+            background-color: rgba(0, 170, 255, 0.1);
+            border-color: #00aaff;
+        }
+
+        .mode-content {
+            display: flex;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: rgba(17, 17, 17, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .mode-image {
+            width: 50%;
+            height: 400px;
+            background-color: #222;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #444;
+        }
+
+        /* Add these styles to fix the image display */
+        .mode-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* Changed from 'cover' to 'contain' */
+            transition: transform 0.3s ease;
+        }
+
+        .mode-image img {
+            transform: scale(1.05);
+            /* Subtle zoom on hover instead of default zoom */
+        }
+
+        .mode-details {
+            width: 50%;
+            padding: 30px;
+        }
+
+        .mode-title {
+            font-size: 2rem;
+            color: #00aaff;
+            margin-bottom: 15px;
+        }
+
+        .mode-desc {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .mode-features {
+            margin-bottom: 20px;
+        }
+
+        .mode-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .feature-icon {
+            min-width: 24px;
+            height: 24px;
+            background-color: #e63946;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        /* Domain Expansion Section */
+        .domain-section {
+            padding: 100px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('/api/placeholder/1600/900');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .domain-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .domain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+
+        .domain-card {
+            height: 320px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+
+        .domain-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 170, 255, 0.4);
+        }
+
+        .domain-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .domain-card:hover .domain-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .domain-card-front,
+        .domain-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .domain-card-front {
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00aaff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 170, 255, 0.7);
+        }
+
+        /* Add these styles to fix the image display */
+        .domain-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* Changed from 'cover' to 'contain' */
+            transition: transform 0.3s ease;
+            transform: scale(1.05);
+        }
+
+        .domain-card-back {
+            background-color: rgba(17, 17, 17, 0.95);
+            transform: rotateY(180deg);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #00aaff;
+            text-align: center;
+            box-sizing: border-box;
+            /* Add this to ensure padding doesn't affect width */
+        }
+
+        /* And adjust the domain-desc to ensure it's centered */
+        .domain-desc {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 90%;
+            margin: 0 auto;
+            text-align: center;
+            /* Ensure text is centered */
+            align-self: center;
+            /* This helps with flexbox alignment */
+        }
+
+        .domain-name {
+            font-size: 2rem;
+            color: #00aaff;
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+            font-weight: 700;
+        }
+
+        .domain-user {
+            color: #e63946;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .domain-user::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #e63946, transparent);
+        }
+
+        /* World Map Section */
+        .world-map {
+            padding: 80px 0;
+            background-color: #0a0a0a;
+        }
+
+        .map-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(17, 17, 17, 0.8);
+            border-radius: 10px;
+            border: 1px solid #333;
+            align-items: center;
+
+        }
+
+        .map-header {
+            background-color: #111;
+            padding: 20px;
             border-bottom: 1px solid #333;
         }
 
-        .about-section h2, .content-section h2 {
-            color: #e63946;
-            margin-bottom: 30px;
+        .map-title {
             font-size: 2rem;
+            color: #00aaff;
+            margin-bottom: 10px;
         }
 
-        .about-section p, .content-section p {
+        .map-subtitle {
+            color: #ccc;
+        }
+
+        .map-image {
+            height: 600px;
+            background-color: #161616;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+        }
+
+        .map-location {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(0, 170, 255, 0.6);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .map-location:hover {
+            transform: scale(1.5);
+            background-color: #00aaff;
+            box-shadow: 0 0 15px rgba(0, 170, 255, 0.8);
+        }
+
+        .map-location.special {
+            background-color: rgba(230, 57, 70, 0.6);
+        }
+
+        .map-location.special:hover {
+            background-color: #e63946;
+            box-shadow: 0 0 15px rgba(230, 57, 70, 0.8);
+        }
+
+        /* Location positions */
+        .loc-1 {
+            top: 25%;
+            left: 30%;
+        }
+
+        .loc-2 {
+            top: 40%;
+            left: 60%;
+        }
+
+        .loc-3 {
+            top: 70%;
+            left: 20%;
+        }
+
+        .loc-4 {
+            top: 60%;
+            left: 45%;
+        }
+
+        .loc-5 {
+            top: 30%;
+            left: 80%;
+        }
+
+        .loc-6 {
+            top: 55%;
+            left: 75%;
+        }
+
+        .location-tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00aaff;
+            padding: 15px;
+            border-radius: 5px;
+            width: 200px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+
+        .location-name {
+            font-size: 1.2rem;
+            color: #00aaff;
+            margin-bottom: 5px;
+        }
+
+        .location-type {
+            font-size: 0.8rem;
+            color: #e63946;
+            margin-bottom: 10px;
+        }
+
+        .location-desc {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* System Requirements */
+        .requirements {
+            padding: 80px 0;
+        }
+
+        .req-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .req-tab {
+            padding: 10px 25px;
+            margin: 0 10px;
+            background-color: rgba(17, 17, 17, 0.8);
+            border: 1px solid #333;
+            border-radius: 5px 5px 0 0;
+            color: #ccc;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .req-tab.active {
+            background-color: #00aaff;
+            color: #fff;
+            border-color: #00aaff;
+        }
+
+        .req-content {
             max-width: 800px;
             margin: 0 auto;
-            font-size: 1.1rem;
+            background-color: rgba(17, 17, 17, 0.8);
+            border-radius: 10px;
+            border: 1px solid #333;
+            padding: 30px;
         }
 
-        ul {
-            text-align: left;
-            max-width: 700px;
-            margin: 20px auto;
-            list-style-type: disc;
-            padding-left: 40px;
+        .req-title {
+            font-size: 1.5rem;
+            color: #00aaff;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
-        ul li {
-            margin-bottom: 10px;
-            font-size: 1rem;
+        .req-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .req-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .req-label {
+            min-width: 120px;
+            font-weight: bold;
+            color: #e63946;
+        }
+
+        .req-value {
+            color: #ccc;
+        }
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .mode-content {
+                flex-direction: column;
+            }
+
+            .mode-image,
+            .mode-details {
+                width: 100%;
+            }
+
+            .domain-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .character-list {
+                justify-content: flex-start;
+            }
+
+            .req-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         footer {
             background-color: #222;
-            padding: 30px 20px;
+            padding: 20px;
             text-align: center;
             color: #f0f0f0;
-            border-top: 2px solid #444;
         }
 
         footer p {
@@ -109,79 +803,936 @@
         }
     </style>
 </head>
+
 <body>
 
     <header>
-        <h1>Jujutsu Kaisen: Rise of Cursed Sorcery</h1>
-        <nav>
-            <ul>
-                <li><a href="#story">Story</a></li>
-                <li><a href="#combat">Combat</a></li>
-                <li><a href="#characters">Characters</a></li>
-                <li><a href="#world">World</a></li>
-                <li><a href="#community">Community</a></li>
-            </ul>
-        </nav>
+        <div class="navbar">
+            <div class="logo">
+                <img src="jjk.png" width="200px">
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="abt.html">About the Game</a></li>
+                    <li><a href="game.html">Play</a></li>
+                    <li><a href="leaderboard.html"">Leaderboards</a></li>
+              <li><a href=" community.html">Community</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href=" acc.html">Account Settings</a></li>
+                </ul>
+            </nav>
+            <div class="cta-buttons">
+                <button class="play-now-btn1">Play Now</button>
+                <button class="download-btn">Download</button>
+            </div>
+        </div>
     </header>
 
-    <section id="about-game" class="about-section">
-        <h2>About the Game</h2>
-        <p>Step into the dark world of <b style="font-size: medium;">Jujutsu Kaisen: Rise of Cursed Sorcery</b> where negative emotions fuel cursed spirits. As a Jujutsu sorcerer, you must defend humanity from these demonic forces in a universe filled with danger, mystery, and magic. Inspired by the anime *Jujutsu Kaisen*, this AAA game takes players into a world of cursed energy, dangerous combat, and unforgettable characters.</p>
-    </section>
-
-    <section id="story" class="content-section">
-        <h2>The Story: A New Age of Cursed Sorcery</h2>
-        <p>Follow your journey as a newly awakened Jujutsu sorcerer, uncovering ancient secrets and dark rituals as cursed spirits rise to threaten the world. Explore new regions beyond the anime’s original settings, and forge your path to confront the resurrection of the cursed king, Ryomen Sukuna.</p>
-        <div class="story-arcs">
-            <h3>Key Story Arcs Include:</h3>
-            <ul>
-                <li>The Awakening: Witness the destruction caused by a cursed spirit and join the Tokyo Metropolitan Magic Technical School.</li>
-                <li>The Rise of the Cursed King: Explore the secrets of cursed energy and confront the factions vying for control.</li>
-                <li>Battle for Humanity’s Survival: Join forces with legendary sorcerers to protect the last strongholds of humanity.</li>
-            </ul>
+    <!-- Game Features -->
+    <section class="section">
+        <h2 class="section-title">Game Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-img"><img src="combat.jpg" alt="combat"></div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Immersive Combat System</h3>
+                    <p class="feature-desc">Experience fluid, high-octane battles with a combat system that faithfully
+                        recreates the heart-pounding intensity of the anime. Chain combos, unleash cursed techniques,
+                        and perform devastating finishers.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-img"><img src="domainExpansion.jpeg" alt="domainExpansion"></div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Domain Expansion</h3>
+                    <p class="feature-desc">Unlock and master each character's unique Domain Expansion – the ultimate
+                        manifestation of Jujutsu sorcery. Experience breathtaking animations and turn the tide of battle
+                        with these powerful abilities.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-img"><img src="yuji1.webp" alt="character"></div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Character Progression</h3>
+                    <p class="feature-desc">Develop your sorcerer's abilities through a deep progression system. Earn
+                        experience, unlock new techniques, and customize your combat style to suit your playstyle.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-img"><img src="multiplayer.jpg" alt="multiplayer"></div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Multiplayer Battles</h3>
+                    <p class="feature-desc">Test your skills against other players in ranked matches or team up with
+                        friends to take on formidable special grade curses in cooperative missions.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-img"><img src="story.jpg" alt="story"></div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Epic Story Campaign</h3>
+                    <p class="feature-desc">Follow an original storyline set in the Jujutsu Kaisen universe, with
+                        faithful recreations of key moments from the anime and manga, plus all-new content exclusive to
+                        the game.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-img"><img src="cursed-spirits.avif" alt="cursed-spirits"></div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Fearsome Cursed Spirits</h3>
+                    <p class="feature-desc">Face off against a roster of terrifying cursed spirits, from minor threats
+                        to special grade monstrosities like Mahito, Hanami, and the King of Curses himself, Ryomen
+                        Sukuna.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="combat" class="content-section">
-        <h2>Cursed Techniques and Combat Mastery</h2>
-        <p>Master your cursed energy, unlock powerful techniques, and customize your combat style. Experience fast-paced, high-stakes battles against cursed spirits and sorcerers alike.</p>
-        <ul>
-            <li>Cursed Energy Manipulation</li>
-            <li>Domain Expansion</li>
-            <li>Cursed Weaponry</li>
-            <li>Cursed Spirit Contracts</li>
-            <li>Skill Trees and Specializations</li>
-        </ul>
+    <!-- Character Showcase -->
+    <section class="character-showcase">
+        <div class="character-bg"></div>
+        <div class="character-container">
+            <h2 class="section-title">Playable Characters</h2>
+            <div class="character-list">
+                <div class="character-card">
+                    <div class="character-img"><img src="yuji3.jpg" alt="yuji"></div>
+                    <div class="character-info">
+                        <h3 class="character-name">Yuji Itadori</h3>
+                        <span class="character-type">Physical Combat</span>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-value">90</span>
+                                <span class="stat-name">Strength</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">85</span>
+                                <span class="stat-name">Speed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">70</span>
+                                <span class="stat-name">Technique</span>
+                            </div>
+                        </div>
+                        <p class="character-desc">The main protagonist with superhuman physical abilities. As Sukuna's
+                            vessel, he has immense potential for growth.</p>
+                        <div class="character-ability">
+                            <div class="ability-name">Black Flash</div>
+                            <p>A powerful hit that distorts space, dealing 2.5x damage.</p>
+                        </div>
+                        <div class="character-ability">
+                            <div class="ability-name">Divergent Fist</div>
+                            <p>A delayed follow-up attack that deals additional damage.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <div class="character-img"><img src="Gojo.jpg" alt="gojo"></div>
+                    <div class="character-info">
+                        <h3 class="character-name">Satoru Gojo</h3>
+                        <span class="character-type">Special Grade</span>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-value">95</span>
+                                <span class="stat-name">Strength</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">95</span>
+                                <span class="stat-name">Speed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">99</span>
+                                <span class="stat-name">Technique</span>
+                            </div>
+                        </div>
+                        <p class="character-desc">The strongest Jujutsu sorcerer, wielding the Limitless Cursed
+                            Technique and Six Eyes.</p>
+                        <div class="character-ability">
+                            <div class="ability-name">Infinity</div>
+                            <p>Creates a space that slows attacks to a near stop.</p>
+                        </div>
+                        <div class="character-ability">
+                            <div class="ability-name">Hollow Purple</div>
+                            <p>Combines positive and negative energy for a devastating attack.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <div class="character-img"><img src="megumi.jpg" alt="megumi"></div>
+                    <div class="character-info">
+                        <h3 class="character-name">Megumi Fushiguro</h3>
+                        <span class="character-type">Shikigami User</span>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-value">80</span>
+                                <span class="stat-name">Strength</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">85</span>
+                                <span class="stat-name">Speed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">90</span>
+                                <span class="stat-name">Technique</span>
+                            </div>
+                        </div>
+                        <p class="character-desc">A skilled sorcerer who can summon various shikigami through his Ten
+                            Shadows Technique.</p>
+                        <div class="character-ability">
+                            <div class="ability-name">Divine Dogs</div>
+                            <p>Summons twin dog shikigami that track and attack enemies.</p>
+                        </div>
+                        <div class="character-ability">
+                            <div class="ability-name">Nue</div>
+                            <p>Summons a bird-like shikigami that can generate electricity.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <div class="character-img"><img src="nobara.jpg" alt="nobara"></div>
+                    <div class="character-info">
+                        <h3 class="character-name">Nobara Kugisaki</h3>
+                        <span class="character-type">Voodoo Specialist</span>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-value">75</span>
+                                <span class="stat-name">Strength</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">80</span>
+                                <span class="stat-name">Speed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">85</span>
+                                <span class="stat-name">Technique</span>
+                            </div>
+                        </div>
+                        <p class="character-desc">A fierce fighter who uses Straw Doll Technique to inflict damage on
+                            enemies from a distance.</p>
+                        <div class="character-ability">
+                            <div class="ability-name">Resonance</div>
+                            <p>Transfers damage between connected targets using nails.</p>
+                        </div>
+                        <div class="character-ability">
+                            <div class="ability-name">Hairpin</div>
+                            <p>A close-range attack that can pierce through cursed spirits.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <div class="character-img"><img src="toge.jpg" alt="toge"></div>
+                    <div class="character-info">
+                        <h3 class="character-name">Toge Inumaki</h3>
+                        <span class="character-type">Cursed Speech</span>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-value">65</span>
+                                <span class="stat-name">Strength</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">75</span>
+                                <span class="stat-name">Speed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">95</span>
+                                <span class="stat-name">Technique</span>
+                            </div>
+                        </div>
+                        <p class="character-desc">A unique sorcerer whose words carry cursed energy, allowing him to
+                            command reality.</p>
+                        <div class="character-ability">
+                            <div class="ability-name">Cursed Speech</div>
+                            <p>Commands that force targets to obey, with varying levels of power.</p>
+                        </div>
+                        <div class="character-ability">
+                            <div class="ability-name">Rice Ball Seal</div>
+                            <p>Uses food terms to limit the recoil damage from his speech.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <div class="character-img"><img src="maki.jpg" alt="maki"></div>
+                    <div class="character-info">
+                        <h3 class="character-name">Maki Zenin</h3>
+                        <span class="character-type">Weapon Specialist</span>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-value">95</span>
+                                <span class="stat-name">Strength</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">90</span>
+                                <span class="stat-name">Speed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">60</span>
+                                <span class="stat-name">Technique</span>
+                            </div>
+                        </div>
+                        <p class="character-desc">Despite lacking cursed energy, Maki possesses superhuman physical
+                            abilities and expertise with cursed tools.</p>
+                        <div class="character-ability">
+                            <div class="ability-name">Cursed Tool Mastery</div>
+                            <p>Expert handling of various cursed weapons and tools.</p>
+                        </div>
+                        <div class="character-ability">
+                            <div class="ability-name">Heavenly Binding</div>
+                            <p>Physical enhancement due to the absence of cursed energy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="characters" class="content-section">
-        <h2>Meet the Characters</h2>
-        <p>Play as iconic characters like Yuji Itadori, Gojo Satoru, or Megumi Fushiguro, or create your own sorcerer with a unique cursed technique.</p>
-        <ul>
-            <li>Yuji Itadori</li>
-            <li>Gojo Satoru</li>
-            <li>Nobara Kugisaki</li>
-            <li>Megumi Fushiguro</li>
-            <li>Ryomen Sukuna</li>
-        </ul>
+    <!-- Gameplay Modes -->
+    <section class="gameplay-modes">
+        <div class="section">
+            <h2 class="section-title">Gameplay Modes</h2>
+            <div class="mode-tabs">
+                <div class="mode-tab active" data-mode="story">Story Campaign</div>
+                <div class="mode-tab" data-mode="pvp">PvP Battles</div>
+                <div class="mode-tab" data-mode="hunt">Cursed Hunt</div>
+                <div class="mode-tab" data-mode="domain">Domain Challenge</div>
+            </div>
+
+            <!-- Story Campaign Mode -->
+            <div class="mode-content active" id="story-mode">
+                <div class="mode-image"><img src="story2.png" alt="Story Campaign"></div>
+                <div class="mode-details">
+                    <h3 class="mode-title">Story Campaign</h3>
+                    <p class="mode-desc">Experience an original story set in the Jujutsu Kaisen universe. Follow Yuji
+                        Itadori and his fellow students at Tokyo Jujutsu High as they face increasingly dangerous
+                        threats from the world of curses.</p>
+                    <div class="mode-features">
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>15+ hours of story content</p>
+                        </div>
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>Fully voiced cutscenes</p>
+                        </div>
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>Multiple difficulty levels</p>
+                        </div>
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>Unlockable character episodes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PvP Battles Mode -->
+            <div class="mode-content" id="pvp-mode">
+                <div class="mode-image"><img src="pvp.jpg" alt="PvP Battles"></div>
+                <div class="mode-details">
+                    <h3 class="mode-title">PvP Battles</h3>
+                    <p class="mode-desc">Test your skills against other players in intense one-on-one battles. Choose
+                        your favorite character, master their abilities, and climb the ranks to become the ultimate
+                        Jujutsu sorcerer.</p>
+                    <div class="mode-features">
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>Ranked and casual matchmaking</p>
+                        </div>
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>Seasonal tournaments with exclusive rewards</p>
+                        </div>
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>Custom matches with friends</p>
+                        </div>
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>Cross-platform play</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cursed Hunt Mode -->
+            <div class="mode-content" id="hunt-mode">
+                <div class="mode-image"><img src="cursed-hunt.jpg" alt="Cursed Hunt"></div>
+                <div class="mode-details">
+                    <h3 class="mode-title">Cursed Hunt</h3>
+                    <p class="mode-desc">Team up with up to three other players to track down and eliminate powerful
+                        cursed spirits across various locations. Coordinate your attacks, combine techniques, and earn
+                        valuable rewards to strengthen your character.</p>
+                    <div class="mode-features">
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>Cooperative multiplayer for up to 4 players</p>
+                        </div>
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>Procedurally generated missions</p>
+                        </div>
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>Rare cursed tool drops and crafting materials</p>
+                        </div>
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>Weekly special grade boss challenges</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Domain Challenge Mode -->
+            <div class="mode-content" id="domain-mode">
+                <div class="mode-image"><img src="domain.jpg" alt="Domain Challenge"></div>
+                <div class="mode-details">
+                    <h3 class="mode-title">Domain Challenge</h3>
+                    <p class="mode-desc">Enter a series of increasingly difficult domain expansions created by powerful
+                        cursed spirits and sorcerers. Survive as long as possible, adapt to changing conditions, and
+                        unlock powerful techniques as you progress deeper into the challenge.</p>
+                    <div class="mode-features">
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>Endless mode with progressive difficulty</p>
+                        </div>
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>Unique domain effects that change gameplay</p>
+                        </div>
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>Temporary power-ups and abilities</p>
+                        </div>
+                        <div class="mode-feature">
+                            <div class="feature-icon">✓</div>
+                            <p>Global leaderboards for each character</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="world" class="content-section">
-        <h2>World and Environment</h2>
-        <p>Explore richly detailed environments blending modern cities with supernatural cursed domains. Traverse dynamic landscapes, including cursed temples and destructible environments.</p>
+    <script>
+        // Tab switching functionality for gameplay modes
+        document.addEventListener('DOMContentLoaded', function () {
+            const modeTabs = document.querySelectorAll('.mode-tab');
+            const modeContents = document.querySelectorAll('.mode-content');
+
+            modeTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    // Remove active class from all tabs
+                    modeTabs.forEach(t => t.classList.remove('active'));
+
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+
+                    // Hide all content sections
+                    modeContents.forEach(content => content.classList.remove('active'));
+
+                    // Show the corresponding content
+                    const mode = this.getAttribute('data-mode');
+                    document.getElementById(`${mode}-mode`).classList.add('active');
+                });
+            });
+        });
+
+        function underDevelopment() {
+            alert('This feature is currently under development. Please check back later!');
+            return false;
+        }
+    </script>
+
+    <style>
+        /* Additional styles for gameplay modes */
+        .mode-content {
+            display: none;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: rgba(17, 17, 17, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #333;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .mode-content.active {
+            display: flex;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mode-tab {
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .mode-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #00aaff, #e63946);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .mode-tab:hover::after {
+            width: 100%;
+        }
+
+        .mode-tab.active::after {
+            width: 100%;
+        }
+
+        .mode-feature {
+            transition: transform 0.3s ease;
+        }
+
+        .mode-feature:hover {
+            transform: translateX(5px);
+        }
+    </style>
+
+    <!-- Domain Expansion Section -->
+    <section class="domain-section">
+        <div class="domain-container">
+            <h2 class="section-title">Domain Expansions</h2>
+            <div class="domain-grid">
+                <div class="domain-card">
+                    <div class="domain-card-inner">
+                        <div class="domain-card-front" style="background-color: #111;"><img src="unlimitedVoid.jpg"
+                                alt="unlimitedVoid"></div>
+                        <div class="domain-card-back">
+                            <h3 class="domain-name">Unlimited Void</h3>
+                            <p class="domain-user">Satoru Gojo</p>
+                            <p class="domain-desc">Traps opponents in an infinite space where they experience all
+                                information in the universe at once, overwhelming their senses and paralyzing them.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="domain-card">
+                    <div class="domain-card-inner">
+                        <div class="domain-card-front" style="background-color: #111;"><img src="domainExpansion.jpeg"
+                                alt="Malevolent Shrine Image"></div>
+                        <div class="domain-card-back">
+                            <h3 class="domain-name">Malevolent Shrine</h3>
+                            <p class="domain-user">Sukuna</p>
+                            <p class="domain-desc">A divine domain that cuts everything within its range with guaranteed
+                                hits, making it nearly impossible to defend against.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="domain-card">
+                    <div class="domain-card-inner">
+                        <div class="domain-card-front" style="background-color: #111;"><img
+                                src="chimeraShadowGarden.jpg" alt="chimeraShadowGarden">
+                        </div>
+                        <div class="domain-card-back">
+                            <h3 class="domain-name">Chimera Shadow Garden</h3>
+                            <p class="domain-user">Megumi Fushiguro</p>
+                            <p class="domain-desc">Creates a shadow realm where Megumi can freely control his shikigami
+                                and merge with shadows for surprise attacks.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="domain-card">
+                    <div class="domain-card-inner">
+                        <div class="domain-card-front" style="background-color: #111;"><img
+                                src="Self-EmbodimentofPerfection.jpg" alt="Self-EmbodimentofPerfection"></div>
+                        <div class="domain-card-back">
+                            <h3 class="domain-name">Self-Embodiment of Perfection</h3>
+                            <p class="domain-user">Mahito</p>
+                            <p class="domain-desc">A domain where Mahito can manipulate the souls of anyone inside with
+                                a mere touch, transforming them at will.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="community" class="content-section">
-        <h2>Community and Competitive Gameplay</h2>
-        <p>Join forces with friends in PvE modes or test your skills in competitive PvP matches. With global leaderboards and events, prove yourself as one of the strongest Jujutsu sorcerers in the world.</p>
+    <!-- World Map Section -->
+    <section class="world-map">
+        <div class="section">
+            <h2 class="section-title">World Map</h2>
+            <div class="map-container">
+                <div class="map-header">
+                    <h3 class="map-title">Jujutsu World</h3>
+                    <p class="map-subtitle">Explore iconic locations from the series and battle in detailed environments
+                    </p>
+                </div>
+                <div class="map-image">
+                    <img src="map.jpg" alt="world map">
+                    <div class="map-location loc-1"></div>
+                    <div class="map-location loc-2"></div>
+                    <div class="map-location loc-3"></div>
+                    <div class="map-location loc-4 special"></div>
+                    <div class="map-location loc-5"></div>
+                    <div class="map-location loc-6 special"></div>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <!-- System Requirements -->
+    <section class="requirements">
+        <div class="section">
+            <h2 class="section-title">System Requirements</h2>
+            <div class="req-tabs">
+                <div class="req-tab active" data-req="minimum">Minimum</div>
+                <div class="req-tab" data-req="recommended">Recommended</div>
+            </div>
+            <div class="req-content" id="minimum-req">
+                <h3 class="req-title">Minimum Requirements</h3>
+                <div class="req-grid">
+                    <div class="req-item">
+                        <span class="req-label">OS:</span>
+                        <span class="req-value">Windows 10 64-bit</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Processor:</span>
+                        <span class="req-value">Intel Core i5-4460 / AMD Ryzen 3 1200</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Memory:</span>
+                        <span class="req-value">8 GB RAM</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Graphics:</span>
+                        <span class="req-value">NVIDIA GTX 960 / AMD RX 570</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">DirectX:</span>
+                        <span class="req-value">Version 11</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Storage:</span>
+                        <span class="req-value">50 GB available space</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Network:</span>
+                        <span class="req-value">Broadband Internet connection</span>
+                    </div>
+                </div>
+            </div>
+            <div class="req-content" id="recommended-req" style="display: none;">
+                <h3 class="req-title">Recommended Requirements</h3>
+                <div class="req-grid">
+                    <div class="req-item">
+                        <span class="req-label">OS:</span>
+                        <span class="req-value">Windows 10/11 64-bit</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Processor:</span>
+                        <span class="req-value">Intel Core i7-8700K / AMD Ryzen 5 3600</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Memory:</span>
+                        <span class="req-value">16 GB RAM</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Graphics:</span>
+                        <span class="req-value">NVIDIA RTX 2060 / AMD RX 5700 XT</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">DirectX:</span>
+                        <span class="req-value">Version 12</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Storage:</span>
+                        <span class="req-value">50 GB SSD</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Network:</span>
+                        <span class="req-value">Broadband Internet connection</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Sound Card:</span>
+                        <span class="req-value">DirectX compatible</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Additional:</span>
+                        <span class="req-value">Controller support (recommended)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add this to your existing script section
+        document.addEventListener('DOMContentLoaded', function () {
+            // System requirements tab switching
+            const reqTabs = document.querySelectorAll('.req-tab');
+            const reqContents = document.querySelectorAll('.req-content');
+
+            reqTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    // Remove active class from all tabs
+                    reqTabs.forEach(t => t.classList.remove('active'));
+
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+
+                    // Hide all content sections
+                    reqContents.forEach(content => {
+                        content.style.display = 'none';
+                    });
+
+                    // Show the corresponding content
+                    const reqType = this.getAttribute('data-req');
+                    document.getElementById(`${reqType}-req`).style.display = 'block';
+                });
+            });
+        });
+    </script>
+    <!-- Call to Action -->
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="cta-overlay"></div>
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Join the Fight?</h2>
+                <p class="cta-text">Unleash your cursed energy and become the strongest jujutsu sorcerer in the world of Jujutsu Kaisen.</p>
+                <div class="cta-buttons">
+                    <button class="cta-btn cta-play">
+                        <span class="btn-icon">▶</span>
+                        <span class="btn-text">Play Now</span>
+                    </button>
+                    <button class="cta-btn cta-download">
+                        <span class="btn-icon">↓</span>
+                        <span class="btn-text">Download Game</span>
+                    </button>
+                </div>
+            </div>
+            <div class="cta-decoration left"></div>
+            <div class="cta-decoration right"></div>
+        </section>
+    
+        <style>
+            /* Enhanced CTA Section Styles */
+            .cta-section {
+                position: relative;
+                padding: 120px 0;
+                text-align: center;
+                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('jjk-bg.jpg');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                overflow: hidden;
+                border-top: 1px solid rgba(0, 170, 255, 0.3);
+                border-bottom: 1px solid rgba(0, 170, 255, 0.3);
+            }
+    
+            .cta-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle at center, rgba(0, 170, 255, 0.1) 0%, rgba(0, 0, 0, 0.8) 70%);
+                z-index: 1;
+            }
+    
+            .cta-content {
+                position: relative;
+                z-index: 2;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+    
+            .cta-title {
+                font-size: 3.5rem;
+                color: #fff;
+                margin-bottom: 25px;
+                text-shadow: 0 0 20px rgba(0, 170, 255, 0.7);
+                font-weight: 800;
+                letter-spacing: 1px;
+                animation: pulse 2s infinite;
+            }
+    
+            @keyframes pulse {
+                0% { text-shadow: 0 0 20px rgba(0, 170, 255, 0.7); }
+                50% { text-shadow: 0 0 30px rgba(230, 57, 70, 0.8); }
+                100% { text-shadow: 0 0 20px rgba(0, 170, 255, 0.7); }
+            }
+    
+            .cta-text {
+                font-size: 1.4rem;
+                color: #eee;
+                max-width: 700px;
+                margin: 0 auto 50px;
+                line-height: 1.6;
+                text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            }
+    
+            .cta-buttons {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 25px;
+            }
+    
+            .cta-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 18px 40px;
+                border-radius: 50px;
+                font-size: 1.2rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                position: relative;
+                overflow: hidden;
+                min-width: 220px;
+            }
+    
+            .btn-icon {
+                margin-right: 10px;
+                font-size: 1.1rem;
+            }
+    
+            .cta-play {
+                background: linear-gradient(135deg, #e63946, #c1272d);
+                color: #fff;
+                border: none;
+                box-shadow: 0 10px 20px rgba(230, 57, 70, 0.4);
+            }
+    
+            .cta-play:hover {
+                transform: translateY(-5px) scale(1.05);
+                box-shadow: 0 15px 30px rgba(230, 57, 70, 0.6);
+            }
+    
+            .cta-play:active {
+                transform: translateY(0) scale(0.98);
+            }
+    
+            .cta-download {
+                background: transparent;
+                color: #fff;
+                border: 2px solid #00aaff;
+                box-shadow: 0 10px 20px rgba(0, 170, 255, 0.2);
+                position: relative;
+                z-index: 1;
+            }
+    
+            .cta-download::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0%;
+                height: 100%;
+                background: linear-gradient(135deg, #00aaff, #0077cc);
+                transition: width 0.4s ease;
+                z-index: -1;
+            }
+    
+            .cta-download:hover::before {
+                width: 100%;
+            }
+    
+            .cta-download:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px rgba(0, 170, 255, 0.4);
+                border-color: transparent;
+            }
+    
+            .cta-download:active {
+                transform: translateY(0) scale(0.98);
+            }
+    
+            .cta-decoration {
+                position: absolute;
+                width: 300px;
+                height: 300px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                opacity: 0.15;
+                z-index: 1;
+            }
+    
+            .cta-decoration.left {
+                left: -50px;
+                bottom: -50px;
+                background-image: url('cursed-energy-left.png');
+                transform: rotate(-15deg);
+            }
+    
+            .cta-decoration.right {
+                right: -50px;
+                top: -50px;
+                background-image: url('cursed-energy-right.png');
+                transform: rotate(15deg);
+            }
+    
+            @media (max-width: 768px) {
+                .cta-title {
+                    font-size: 2.5rem;
+                }
+                
+                .cta-text {
+                    font-size: 1.1rem;
+                    margin-bottom: 40px;
+                }
+                
+                .cta-buttons {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                
+                .cta-btn {
+                    width: 100%;
+                    max-width: 280px;
+                }
+                
+                .cta-decoration {
+                    width: 200px;
+                    height: 200px;
+                }
+            }
+        </style>
 
     <footer>
-        <p>&copy; 2024 Jujutsu Kaisen: Rise of Cursed Sorcery. All rights reserved.</p>
+        <p>© 2023 Jujutsu Kaisen: Rise of Cursed Sorcery. All rights reserved.</p>
+        <p>Jujutsu Kaisen is a registered trademark. This is a fan-made project.</p>
     </footer>
 
     <script>
-        console.log("Welcome to Jujutsu Kaisen: Rise of Cursed Sorcery page!");
-    </script>
-</body>
-</html>
+        function underDevelopment() {
+            alert("This webpage is under development.");
+        }
+
+        // Fix the extra quotation mark in the navigation
+        document.addEventListener('DOMContentLoaded', function () {
+            // Tab switching for gameplay modes
+            const modeTabs = document.querySelectorAll('.mode-tab');
+            modeTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    modeTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    // In a real implementation, this would switch the content
+                });
+            });
+        })
+        // Tab switching for system requirements
